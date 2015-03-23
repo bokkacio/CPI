@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ipc_full">Индекс потребительских цен</string>
+    <string name="ipc_short">CPI</string>
+    <string name="soft_version">Версия: 1.0</string>
+    <string name="copyright_info">(c) Лаврик Вера</string>
+</resources>
