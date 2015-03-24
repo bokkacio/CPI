@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">CPI</string>
+    <!--about.xml-->
     <string name="ipc_full">Индекс потребительских цен</string>
     <string name="ipc_short">CPI</string>
     <string name="soft_version">Версия: 1.0</string>
     <string name="copyright_info">(c) Лаврик Вера</string>
+    <!--settings.xml-->
+    <string name="lbl_regionCode">Код региона</string>
+    <string name="lbl_regionName">Наименование региона</string>
+    <string name="lbl_currentWorkingPeriod">Рабочий период</string>
+    <string name="btn_acceptSettingsChanges">Сохранить изменения</string>
 </resources>
