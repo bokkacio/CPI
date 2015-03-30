@@ -11,4 +11,7 @@
     <string name="lbl_regionName">Наименование региона</string>
     <string name="lbl_currentWorkingPeriod">Рабочий период</string>
     <string name="btn_acceptSettingsChanges">Сохранить изменения</string>
+    <!--data_input.xml-->
+    <string name="btn_savePriceForCurrentPeriod">Сохранить цену</string>
+    <string name="btn_deletePriceForCurrentPeriod">Удалить цену</string>
 </resources>
