@@ -12,60 +12,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lbl_regionName"
-                android:textColor="@color/black"
-                android:layout_gravity="center_horizontal"/>
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="<"
-                        android:id="@+id/button3"
-                        android:layout_gravity="center_vertical"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4">
-                <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/spinner_regionCode"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text=">"
-                        android:id="@+id/button4"
-                        android:layout_gravity="center_vertical"/>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lbl_regionName"
+                android:text="@string/lbl_currentShop"
                 android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"/>
         <LinearLayout
@@ -115,7 +62,57 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lbl_regionName"
+                android:text="@string/lbl_currentCategory"
+                android:textColor="@color/black"
+                android:layout_gravity="center_horizontal"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="<"
+                        android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4">
+                <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text=">"
+                        android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_currentProduct"
                 android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"/>
         <LinearLayout
@@ -180,7 +177,7 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/lbl_regionName"
+                            android:text="@string/lbl_previousPrice"
                             android:textColor="@color/black"
                             android:layout_gravity="center_horizontal"/>
                     <EditText
@@ -198,7 +195,7 @@
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/lbl_regionName"
+                            android:text="@string/lbl_currentPrice"
                             android:textColor="@color/black"
                             android:layout_gravity="center_horizontal"/>
                     <EditText
@@ -217,7 +214,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/lbl_regionName"
+                        android:text="@string/lbl_presetProductAmount"
                         android:textColor="@color/black"
                         android:layout_gravity="center_horizontal"/>
                 <Spinner
@@ -238,7 +235,7 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/btn_acceptSettingsChanges"
+                        android:text="@string/btn_deletePriceForCurrentPeriod"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
             <LinearLayout
@@ -249,7 +246,7 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/btn_acceptSettingsChanges"
+                        android:text="@string/btn_savePriceForCurrentPeriod"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
         </LinearLayout>

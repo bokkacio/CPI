@@ -13,5 +13,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.DataInput"/>
+        <activity android:name=".ui.activity.ElementsEdit"/>
     </application>
 </manifest> 
