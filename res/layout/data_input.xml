@@ -28,7 +28,7 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="<"
+                        android:text="@string/lbl_previousElement"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
             <LinearLayout
@@ -48,7 +48,7 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text=">"
+                        android:text="@string/lbl_nextElement"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
         </LinearLayout>
@@ -78,7 +78,7 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="<"
+                        android:text="@string/lbl_previousElement"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
             <LinearLayout
@@ -98,7 +98,7 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text=">"
+                        android:text="@string/lbl_nextElement"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
         </LinearLayout>
@@ -128,7 +128,7 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="<"
+                        android:text="@string/lbl_previousElement"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
             <LinearLayout
@@ -148,7 +148,7 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text=">"
+                        android:text="@string/lbl_nextElement"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
         </LinearLayout>

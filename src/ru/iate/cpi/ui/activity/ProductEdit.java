@@ -5,12 +5,12 @@ import android.os.Bundle;
 import ru.iate.cpi.R;
 
 /**
- * Created by sanea on 08.04.15.
+ * Created by sanea on 13.04.15.
  */
-public class ElementsEdit extends Activity {
+public class ProductEdit extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.elements_edit);
+        setContentView(R.layout.product_edit);
     }
 }
