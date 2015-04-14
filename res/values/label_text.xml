@@ -22,10 +22,18 @@
     <string name="lbl_currentProduct">Товар</string>
     <string name="lbl_previousElement">lt</string>
     <string name="lbl_nextElement">gt</string>
-    <!--product.xml-->
+    <!--product_edit.xml-->
     <string name="lbl_productCategory">Категория</string>
     <string name="lbl_productTitle">Товар</string>
     <string name="lbl_productToAddTitle">Наименование нового товара</string>
     <string name="lbl_productAdd">Удалить</string>
     <string name="lbl_productRemove">Добавить</string>
+    <!--store_edit.xml-->
+    <string name="lbl_storeList">Магазин</string>
+    <string name="lbl_storeToAddTitle">Наименование нового магазина</string>
+    <string name="lbl_storeAdd">Удалить</string>
+    <string name="lbl_storeRemove">Добавить</string>
+    <!--category_edit.xml-->
+
+
 </resources>

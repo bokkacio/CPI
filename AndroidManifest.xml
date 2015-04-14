@@ -14,5 +14,7 @@
         </activity>
         <activity android:name=".ui.activity.DataInput"/>
         <activity android:name=".ui.activity.ProductEdit"/>
+        <activity android:name=".ui.activity.StoreEdit"/>
+        <activity android:name=".ui.activity.CategoryEdit"/>
     </application>
 </manifest> 
