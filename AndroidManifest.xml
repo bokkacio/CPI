@@ -16,5 +16,7 @@
         <activity android:name=".ui.activity.ProductEdit"/>
         <activity android:name=".ui.activity.StoreEdit"/>
         <activity android:name=".ui.activity.CategoryEdit"/>
+        <activity android:name=".ui.activity.CpiResult"/>
+        <activity android:name=".ui.activity.SpendingCalculation"/>
     </application>
 </manifest> 

@@ -14,7 +14,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lbl_productCategory"
+                android:text="@string/lbl_categoryList"
                 android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"/>
         <ListView
@@ -22,21 +22,6 @@
                 android:layout_height="wrap_content"/>
     </LinearLayout>
 
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lbl_productTitle"
-                android:textColor="@color/black"
-                android:layout_gravity="center_horizontal"/>
-        <ListView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-    </LinearLayout>
 
     <LinearLayout
             android:orientation="vertical"
@@ -51,13 +36,45 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lbl_productToAddTitle"
+                    android:text="@string/lbl_categoryCode"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_horizontal"/>
+            <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_categoryTitle"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_horizontal"/>
+            <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_categoryWeight"
                     android:textColor="@color/black"
                     android:layout_gravity="center_horizontal"/>
             <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
         </LinearLayout>
+
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -71,7 +88,7 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/lbl_productAdd"
+                        android:text="@string/lbl_categoryAdd"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
             <LinearLayout
@@ -82,7 +99,7 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/lbl_productRemove"
+                        android:text="@string/lbl_categoryRemove"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
         </LinearLayout>
