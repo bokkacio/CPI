@@ -17,5 +17,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="eventbus-2.4.0" level="project" />
     <orderEntry type="library" name="ormlite-android-4.48" level="project" />
+    <orderEntry type="library" name="ormlite-core-4.48" level="project" />
   </component>
 </module>
