@@ -11,11 +11,15 @@ import java.util.Date;
 
 @DatabaseTable(tableName = "cpi_settings")
 public class Settings {
+    public final static String SETTINGS_ID_FIELD = "settings_id";
     public final static String SETTINGS_WORKING_PERIOD_FIELD = "working_period";
 
     public Settings(){
         //needed by ormlite
     }
+
+    @DatabaseField(generatedId = true, columnName = SETTINGS_ID_FIELD)
+    private int Id;
 
     @DatabaseField(canBeNull = false, dataType = DataType.INTEGER, columnName = Region.REGION_ID_FIELD)
     private String RegionId;

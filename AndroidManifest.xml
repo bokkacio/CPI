@@ -18,5 +18,6 @@
         <activity android:name=".ui.activity.CategoryEdit"/>
         <activity android:name=".ui.activity.CpiResult"/>
         <activity android:name=".ui.activity.SpendingCalculation"/>
+        <service android:name=".service.CpiService"/>
     </application>
 </manifest> 
