@@ -1,0 +1,25 @@
+package ru.iate.cpi.db.table;
+
+import com.j256.ormlite.field.DataType;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import java.util.Date;
+
+/**
+ * Created by sanea on 04.05.15.
+ */
+
+@DatabaseTable(tableName = "cpi_settings")
+public class Settings {
+    public final static String SETTINGS_WORKING_PERIOD_FIELD = "working_period";
+
+    public Settings(){
+        //needed by ormlite
+    }
+
+    @DatabaseField(canBeNull = false, dataType = DataType.INTEGER, columnName = Region.REGION_ID_FIELD)
+    private String RegionId;
+
+    @DatabaseField(canBeNull = false, dataType = DataType.DATE, columnName = SETTINGS_WORKING_PERIOD_FIELD)
+    private Date Title;
+}
