@@ -18,6 +18,11 @@ public class Region {
         //needed by ormlite
     }
 
+    public Region(String code, String title) {
+        this.Code = code;
+        this.Title = title;
+    }
+
     @DatabaseField(generatedId = true, columnName = REGION_ID_FIELD)
     private int Id;
 
@@ -26,4 +31,12 @@ public class Region {
 
     @DatabaseField(canBeNull = false, dataType = DataType.STRING, columnName = REGION_TITLE_FIELD)
     private String Title;
+
+    public int GetId(){
+        return this.Id;
+    }
+
+    public String GetTitle(){
+        return this.Title;
+    }
 }

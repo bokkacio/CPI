@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ProgressBar;
+import de.greenrobot.event.EventBus;
 import ru.iate.cpi.R;
+import ru.iate.cpi.db.DatabaseFactory;
+import ru.iate.cpi.event.InitDatabaseEvent;
 import ru.iate.cpi.service.CpiService;
 
 import java.util.concurrent.TimeUnit;
@@ -25,6 +28,11 @@ public class About extends Activity {
         setContentView(R.layout.about);
 
         startService(new Intent(this, CpiService.class));
+
+        //init database in the service
+        if(DatabaseFactory.Get() == null)
+            EventBus.getDefault().post(new InitDatabaseEvent());
+
         initComponents();
         showAppLoad();
     }
