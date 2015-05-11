@@ -3,12 +3,13 @@ package ru.iate.cpi.ui.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ProgressBar;
 import de.greenrobot.event.EventBus;
 import ru.iate.cpi.R;
-import ru.iate.cpi.db.DatabaseFactory;
 import ru.iate.cpi.event.InitDatabaseEvent;
 import ru.iate.cpi.service.CpiService;
+import ru.iate.cpi.ui.LogTags;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,11 +29,6 @@ public class About extends Activity {
         setContentView(R.layout.about);
 
         startService(new Intent(this, CpiService.class));
-
-        //init database in the service
-        if(DatabaseFactory.Get() == null)
-            EventBus.getDefault().post(new InitDatabaseEvent());
-
         initComponents();
         showAppLoad();
     }
@@ -55,11 +51,20 @@ public class About extends Activity {
                 try {
                     for (int i = 1; i <= MAX_PROGRESS; i++)
                     {
+                        //init database in the service
+                        if(i == MAX_PROGRESS/2)
+                            EventBus.getDefault().post(new InitDatabaseEvent());
+
                         TimeUnit.MILLISECONDS.sleep(SLEEP_PERIOD);
                         pbAppLoadProcess.setProgress(i);
                     }
+
+                    //start Settings activity
+                    Intent intent = new Intent(pbAppLoadProcess.getContext(), Settings.class);
+                    startActivity(intent);
+
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    Log.d(LogTags.ERROR_PREFIX, e.getMessage());
                 }
             }
         });

@@ -35,7 +35,7 @@
         <Spinner
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinner_regionName"/>
+                android:id="@+id/spinner_regionTitle"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="vertical"
@@ -64,7 +64,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_acceptSettingsChanges"
-                android:id="@+id/button"
+                android:id="@+id/button_setWorkingPeriod"
                 android:layout_gravity="center_vertical"/>
     </LinearLayout>
 </LinearLayout>

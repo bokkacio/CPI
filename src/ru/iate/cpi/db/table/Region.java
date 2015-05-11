@@ -36,6 +36,10 @@ public class Region {
         return this.Id;
     }
 
+    public String GetCode(){
+        return this.Code;
+    }
+
     public String GetTitle(){
         return this.Title;
     }

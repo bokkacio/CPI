@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class OrmLiteDatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static final String DATABASE_NAME = "cpi_main.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private Dao<Category, Integer> categoryDao = null;
     private Dao<Data, Integer> dataDao = null;

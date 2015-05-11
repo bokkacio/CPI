@@ -22,7 +22,7 @@ public class Settings {
     private int Id;
 
     @DatabaseField(canBeNull = false, dataType = DataType.INTEGER, columnName = Region.REGION_ID_FIELD)
-    private String RegionId;
+    private int RegionId;
 
     @DatabaseField(canBeNull = false, dataType = DataType.DATE, columnName = SETTINGS_WORKING_PERIOD_FIELD)
     private Date Title;
