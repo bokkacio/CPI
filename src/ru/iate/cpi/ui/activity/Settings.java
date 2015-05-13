@@ -3,6 +3,8 @@ package ru.iate.cpi.ui.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.Spinner;
@@ -11,7 +13,6 @@ import ru.iate.cpi.R;
 import ru.iate.cpi.db.table.Region;
 import ru.iate.cpi.event.GetRegionsEvent;
 import ru.iate.cpi.event.RegionsSourceEvent;
-import ru.iate.cpi.service.CpiService;
 import ru.iate.cpi.ui.LogTags;
 import ru.iate.cpi.ui.containers.SpinnerElement;
 
@@ -21,7 +22,7 @@ import java.util.List;
 /**
  * Created by sanea on 24.03.15.
  */
-public class Settings extends Activity {
+public class Settings extends Activity implements AdapterView.OnItemSelectedListener {
     private DatePicker workingPeriodPicker;
     private Spinner spinnerRegionTitle, spinnerRegionCode;
     private List<Region> Regions = null;
@@ -48,6 +49,9 @@ public class Settings extends Activity {
         spinnerRegionCode = (Spinner)findViewById(R.id.spinner_regionCode);
         spinnerRegionTitle = (Spinner)findViewById(R.id.spinner_regionTitle);
 
+        spinnerRegionCode.setOnItemSelectedListener(this);
+        spinnerRegionTitle.setOnItemSelectedListener(this);
+
         //disable writing inside a date picker using keyboard
         workingPeriodPicker.setDescendantFocusability(DatePicker.FOCUS_BLOCK_DESCENDANTS);
     }
@@ -65,6 +69,16 @@ public class Settings extends Activity {
 
         setSpinnerAdapter(codeList, spinnerRegionCode);
         setSpinnerAdapter(titleList, spinnerRegionTitle);
+    }
+
+    public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
+        spinnerRegionCode.setSelection(pos);
+        spinnerRegionTitle.setSelection(pos);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
     }
 
     private void setSpinnerAdapter(List<SpinnerElement> elements, Spinner spinner){

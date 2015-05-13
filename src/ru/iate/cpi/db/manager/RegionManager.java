@@ -2,6 +2,7 @@ package ru.iate.cpi.db.manager;
 
 import android.content.Context;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.QueryBuilder;
 import ru.iate.cpi.R;
 import ru.iate.cpi.db.helper.OrmLiteDatabaseHelper;
 import ru.iate.cpi.db.table.Region;
@@ -43,8 +44,9 @@ public class RegionManager {
 
     public List<Region> GetRegions() throws Exception{
         try {
-            Dao<Region,Integer> daoRegions = _db.getRegionDao();
-            return daoRegions.queryForAll();
+            QueryBuilder<Region,Integer> daoRegions = _db.getRegionDao().queryBuilder();
+            daoRegions.orderBy(Region.REGION_CODE_FIELD, true);
+            return daoRegions.query();
         }
         catch(Exception ex){
             throw ex;
