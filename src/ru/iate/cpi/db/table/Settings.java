@@ -18,6 +18,11 @@ public class Settings {
         //needed by ormlite
     }
 
+    public Settings(int regionId, Date workingPeriod){
+        this.RegionId = regionId;
+        this.WorkingPeriod = workingPeriod;
+    }
+
     @DatabaseField(generatedId = true, columnName = SETTINGS_ID_FIELD)
     private int Id;
 
@@ -25,5 +30,13 @@ public class Settings {
     private int RegionId;
 
     @DatabaseField(canBeNull = false, dataType = DataType.DATE, columnName = SETTINGS_WORKING_PERIOD_FIELD)
-    private Date Title;
+    private Date WorkingPeriod;
+
+    public int GetRegionId(){
+        return RegionId;
+    }
+
+    public Date GetWorkingPeriod(){
+        return WorkingPeriod;
+    }
 }
