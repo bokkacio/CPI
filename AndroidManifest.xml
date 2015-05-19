@@ -5,19 +5,19 @@
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="10"/>
     <application android:label="@string/app_name">
-        <activity android:name=".ui.activity.About">
+        <activity android:name=".ui.activity.About" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>>
-        <activity android:name=".ui.activity.Settings"/>
-        <activity android:name=".ui.activity.DataInput"/>
-        <activity android:name=".ui.activity.ProductEdit"/>
-        <activity android:name=".ui.activity.StoreEdit"/>
-        <activity android:name=".ui.activity.CategoryEdit"/>
-        <activity android:name=".ui.activity.CpiResult"/>
-        <activity android:name=".ui.activity.SpendingCalculation"/>
+        <activity android:name=".ui.activity.Settings" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.DataInput" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.ProductEdit" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.StoreEdit" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.CategoryEdit" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.CpiResult" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.activity.SpendingCalculation" android:screenOrientation="portrait"/>
         <service android:name=".service.CpiService"/>
     </application>
 </manifest> 
