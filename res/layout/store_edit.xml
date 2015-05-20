@@ -40,6 +40,7 @@
                     android:layout_gravity="center_horizontal"/>
             <EditText
                     android:layout_width="match_parent"
+                    android:id="@+id/editText_storeTitle"
                     android:layout_height="match_parent"/>
         </LinearLayout>
         <LinearLayout
@@ -56,6 +57,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="@string/lbl_storeAdd"
+                        android:onClick="RemoveStore"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
             <LinearLayout
@@ -67,6 +69,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="@string/lbl_storeRemove"
+                        android:onClick="AddStore"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
         </LinearLayout>

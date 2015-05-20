@@ -18,9 +18,21 @@ public class Store {
         //needed by ormlite
     }
 
+    public Store(String title){
+        this.Title = title;
+    }
+
     @DatabaseField(generatedId = true, columnName = STORE_ID_FIELD)
     private int Id;
 
     @DatabaseField(canBeNull = false, dataType = DataType.STRING, columnName = STORE_TITLE_FIELD)
     private String Title;
+
+    public int GetId(){
+        return this.Id;
+    }
+
+    public String GetTitle(){
+        return this.Title;
+    }
 }

@@ -9,6 +9,7 @@ import de.greenrobot.event.EventBus;
 import ru.iate.cpi.db.DatabaseFactory;
 import ru.iate.cpi.db.manager.RegionManager;
 import ru.iate.cpi.db.manager.SettingsManager;
+import ru.iate.cpi.db.manager.StoreManager;
 import ru.iate.cpi.db.table.Region;
 import ru.iate.cpi.db.table.Settings;
 import ru.iate.cpi.event.*;
@@ -95,6 +96,44 @@ public class CpiService extends Service {
         }
         catch (Exception ex){
             Log.d(LogTags.ERROR_PREFIX, "CpiService - AddSettingEvent" + ex.getMessage());
+        }
+    }
+
+    //extract stores
+    public void onEventBackgroundThread(GetStoresEvent event){
+        try {
+
+            StoreManager manager = new StoreManager(DatabaseFactory.Get());
+            EventBus.getDefault().post(new StoresSourceEvent(manager.GetStores()));
+        }
+        catch (Exception ex){
+            Log.d(LogTags.ERROR_PREFIX, "CpiService - GetStoresEvent" + ex.getMessage());
+        }
+    }
+
+    //add store
+    public void onEventBackgroundThread(AddStoreEvent event){
+        try {
+
+            StoreManager manager = new StoreManager(DatabaseFactory.Get());
+            manager.AddStore(event.newStore);
+            EventBus.getDefault().post(new StoresSourceEvent(manager.GetStores()));
+        }
+        catch (Exception ex){
+            Log.d(LogTags.ERROR_PREFIX, "CpiService - AddStoreEvent" + ex.getMessage());
+        }
+    }
+
+    //delete store
+    public void onEventBackgroundThread(DeleteStoreEvent event){
+        try {
+
+            StoreManager manager = new StoreManager(DatabaseFactory.Get());
+            manager.DeleteStore(event.storeId);
+            EventBus.getDefault().post(new StoresSourceEvent(manager.GetStores()));
+        }
+        catch (Exception ex){
+            Log.d(LogTags.ERROR_PREFIX, "CpiService - AddStoreEvent" + ex.getMessage());
         }
     }
 }
