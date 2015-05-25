@@ -1,19 +1,18 @@
 package ru.iate.cpi.ui.activity;
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.*;
 import de.greenrobot.event.EventBus;
 import ru.iate.cpi.R;
 import ru.iate.cpi.db.table.Store;
 import ru.iate.cpi.event.*;
 import ru.iate.cpi.ui.containers.ListViewElement;
-import ru.iate.cpi.ui.containers.SpinnerElement;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +24,8 @@ public class StoreEdit extends Activity {
 
     private ListView listViewStoresToEdit;
     private EditText editTextStoreTitle;
+    private InputMethodManager inputManager;
+    private ListViewElement selectedStore = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,11 @@ public class StoreEdit extends Activity {
         listViewStoresToEdit = (ListView)findViewById(R.id.listView_storesToEdit);
         editTextStoreTitle = (EditText)findViewById(R.id.editText_storeTitle);
 
+        inputManager= (InputMethodManager)getSystemService(
+                Context.INPUT_METHOD_SERVICE);
+        //hide keyboard
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
         //extract regions
         if(stores == null)
             EventBus.getDefault().post(new GetStoresEvent());
@@ -48,20 +54,38 @@ public class StoreEdit extends Activity {
 
     public void AddStore(View view){
         String storeTitle = editTextStoreTitle.getText().toString();
-        if(storeTitle == "")
+        if(storeTitle.equals(""))
             return;
 
+        for (Store store : stores)
+            if(store.GetTitle().equals(storeTitle)){
+                restoreEditText();
+                Toast.makeText(this, String.format("Магазин %s уже существует", storeTitle), Toast.LENGTH_SHORT).show();
+                return;
+            }
+
         EventBus.getDefault().post(new AddStoreEvent(new Store(storeTitle)));
+        restoreEditText();
     }
 
     public void RemoveStore(View view){
-        //EventBus.getDefault().post(new GetStoresEvent());
+        if(selectedStore != null)
+            EventBus.getDefault().post(new DeleteStoreEvent(selectedStore.Id));
+
+        restoreEditText();
     }
 
     //Extract stores from DB
     public void onEventMainThread(StoresSourceEvent event){
         stores = event.Stores;
         initListView();
+    }
+
+    private void restoreEditText(){
+        editTextStoreTitle.setText("");
+        listViewStoresToEdit.setFocusable(true);
+        //hide keyboard
+        inputManager.hideSoftInputFromWindow(editTextStoreTitle.getWindowToken(), 0);
     }
 
     private void initListView(){
@@ -74,5 +98,17 @@ public class StoreEdit extends Activity {
                 android.R.layout.simple_list_item_1, list);
 
         listViewStoresToEdit.setAdapter(dataAdapter);
+        listViewStoresToEdit.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                for (int i=0; i < listViewStoresToEdit.getChildCount(); i++){
+                    View listElement = listViewStoresToEdit.getChildAt(i);
+                    listElement.setBackgroundColor(getResources().getColor(R.color.mint));
+                }
+                selectedStore = (ListViewElement) listViewStoresToEdit.getItemAtPosition(position);
+                view.setBackgroundColor(Color.CYAN);
+            }
+        });
     }
 }
