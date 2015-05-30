@@ -7,6 +7,7 @@ import android.os.IBinder;
 import android.util.Log;
 import de.greenrobot.event.EventBus;
 import ru.iate.cpi.db.DatabaseFactory;
+import ru.iate.cpi.db.manager.CategoryManager;
 import ru.iate.cpi.db.manager.RegionManager;
 import ru.iate.cpi.db.manager.SettingsManager;
 import ru.iate.cpi.db.manager.StoreManager;
@@ -44,10 +45,16 @@ public class CpiService extends Service {
     public void onEventBackgroundThread(InitDatabaseEvent event){
         try {
             DatabaseFactory.Set(getApplicationContext());
-            RegionManager manager = new RegionManager(_context, DatabaseFactory.Get());
+            RegionManager regionManager = new RegionManager(_context, DatabaseFactory.Get());
+            CategoryManager categoryManager = new CategoryManager(_context, DatabaseFactory.Get());
+
             //fill regions only once
-            if(manager.GetRegions().isEmpty())
-                manager.FillRegions();
+            if(regionManager.GetRegions().isEmpty())
+                regionManager.FillRegions();
+
+            //fill categories only once
+            if(categoryManager.GetCategories().isEmpty())
+                categoryManager.FillCategories();
         }
         catch (Exception ex){
             Log.d(LogTags.ERROR_PREFIX, "CpiService - InitDatabaseEvent" + ex.getMessage());
