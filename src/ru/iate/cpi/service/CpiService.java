@@ -11,6 +11,7 @@ import ru.iate.cpi.db.manager.CategoryManager;
 import ru.iate.cpi.db.manager.RegionManager;
 import ru.iate.cpi.db.manager.SettingsManager;
 import ru.iate.cpi.db.manager.StoreManager;
+import ru.iate.cpi.db.table.Category;
 import ru.iate.cpi.db.table.Region;
 import ru.iate.cpi.db.table.Settings;
 import ru.iate.cpi.event.*;
@@ -141,6 +142,18 @@ public class CpiService extends Service {
         }
         catch (Exception ex){
             Log.d(LogTags.ERROR_PREFIX, "CpiService - AddStoreEvent" + ex.getMessage());
+        }
+    }
+
+    //extract categories
+    public void onEventBackgroundThread(GetCategoriesEvent event){
+        try {
+
+            CategoryManager manager = new CategoryManager(_context, DatabaseFactory.Get());
+            EventBus.getDefault().post(new CategoriesSourceEvent(manager.GetCategories()));
+        }
+        catch (Exception ex){
+            Log.d(LogTags.ERROR_PREFIX, "CpiService - GetCategoriesEvent" + ex.getMessage());
         }
     }
 }

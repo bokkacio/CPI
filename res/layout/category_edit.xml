@@ -5,7 +5,6 @@
               android:layout_height="match_parent"
               android:background="@color/mint">
 
-
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -14,51 +13,38 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lbl_categoryList"
+                android:text="@string/lbl_categoryGroupList"
                 android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"/>
-        <ListView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+        <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner_categoryGroupEdit"/>
     </LinearLayout>
-
 
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
-        <LinearLayout
-                android:orientation="vertical"
+            android:layout_weight="4">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_categoryList"
+                android:textColor="@color/black"
+                android:layout_gravity="center_horizontal"/>
+        <ExpandableListView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lbl_categoryCode"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"/>
-            <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/expandable_categoryEdit" />
+    </LinearLayout>
 
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lbl_categoryTitle"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"/>
-            <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
-        </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -80,28 +66,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1">
-            <LinearLayout
-                    android:orientation="vertical"
+            <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1">
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_categoryAdd"
-                        android:layout_gravity="center_vertical"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_categoryRemove"
-                        android:layout_gravity="center_vertical"/>
-            </LinearLayout>
+                    android:text="@string/lbl_categorySave"
+                    android:layout_gravity="center_vertical"/>
         </LinearLayout>
     </LinearLayout>
 

@@ -17,11 +17,9 @@ public class Category {
     public final static String CATEGORY_TITLE_FIELD = "category_title";
     public final static String CATEGORY_WEIGHT_FIELD = "category_weight";
 
-    public final static int LEVEL_1 = 1;
-    public final static int LEVEL_2 = 2;
-    public final static int LEVEL_3 = 3;
-    public final static int LEVEL_4 = 4;
-    public final static int LEVEL_5 = 5;
+    public final static int LEVEL_GROUP = 1;
+    public final static int LEVEL_SUBGROUP = 2;
+    public final static int LEVEL_ITEM = 6;
 
     public Category(){
         //needed by ormlite
@@ -67,5 +65,9 @@ public class Category {
 
     public float GetWeight(){
         return this.Weight;
+    }
+
+    public String GetTextLayout(){
+        return String.format("%s %s", GetCode(), GetTitle());
     }
 }

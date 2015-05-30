@@ -39,7 +39,8 @@ public class CategoryManager {
                 String[] splittedArray = line.split(";");
                 float weight = Float.parseFloat(splittedArray[2]);
                 String code = splittedArray[0].trim();
-                cpiCategory = new Category(code.split(".").length,code,splittedArray[1].trim(),weight);
+                int codeLevel = code.split("\\.").length;
+                cpiCategory = new Category(codeLevel,code,splittedArray[1].trim(),weight);
                 daoCategories.create(cpiCategory);
             }
         }

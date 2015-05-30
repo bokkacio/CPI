@@ -34,12 +34,11 @@
     <string name="lbl_storeAdd">Удалить</string>
     <string name="lbl_storeRemove">Добавить</string>
     <!--category_edit.xml-->
-    <string name="lbl_categoryList">Категория</string>
-    <string name="lbl_categoryCode">Код категории</string>
-    <string name="lbl_categoryTitle">Наименование категории</string>
+    <string name="lbl_categoryGroupList">Группа</string>
+    <string name="lbl_categorySubGroupList">Подгруппа</string>
+    <string name="lbl_categoryList">Категории</string>
     <string name="lbl_categoryWeight">Удельный вес</string>
-    <string name="lbl_categoryAdd">Удалить</string>
-    <string name="lbl_categoryRemove">Добавить</string>
+    <string name="lbl_categorySave">Изменить удельный вес</string>
     <!--cpi_result.xml-->
     <string name="lbl_cpiList">ИПЦ по категориям</string>
     <string name="lbl_cpiConstruction">Расчет ИПЦ</string>
