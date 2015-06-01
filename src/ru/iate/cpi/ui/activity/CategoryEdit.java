@@ -29,6 +29,7 @@ import java.util.List;
 public class CategoryEdit extends Activity{
     private Spinner spinnerCategoryGroup;
     private ExpandableListView expandableCategoryItems;
+    private EditText editCategoryWeight;
 
     private InputMethodManager inputManager;
 
@@ -36,7 +37,7 @@ public class CategoryEdit extends Activity{
     private List<Category> groupCategories;
     private List<Category> subGroupCategories;
 
-    private Category selectedGroup, selectedSubGroup, selectedItem;
+    private Category selectedGroup, selectedItem;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,7 @@ public class CategoryEdit extends Activity{
     private void initComponents(){
         spinnerCategoryGroup = (Spinner)findViewById(R.id.spinner_categoryGroupEdit);
         expandableCategoryItems = (ExpandableListView)findViewById(R.id.expandable_categoryEdit);
+        editCategoryWeight = (EditText)findViewById(R.id.editText_categoryWeight);
 
         inputManager= (InputMethodManager) getSystemService(
                 Context.INPUT_METHOD_SERVICE);
@@ -87,6 +89,23 @@ public class CategoryEdit extends Activity{
             initSpinner();
             expandableCategoryItems.setAdapter(getExpandableAdapter());
         }
+
+        expandableCategoryItems.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                v.setSelected(true);
+                HashMap child = (HashMap) expandableCategoryItems.getExpandableListAdapter().getChild(groupPosition, childPosition);
+                String childCode = (String)child.get("itemCode");
+                for (Category category : categories)
+                    if(childCode.equals(category.GetCode())){
+                        selectedItem = category;
+                        editCategoryWeight.setText(selectedItem.GetWeight() + "");
+                        break;
+                    }
+                return false;
+            }
+        });
     }
 
     private void initSpinner(){
@@ -147,7 +166,7 @@ public class CategoryEdit extends Activity{
                     continue;
                 HashMap child = new HashMap();
                 child.put("itemCode", categories.get(j).GetCode());
-                child.put("itemTitle", categories.get(j).GetTitle());
+                child.put("itemTitle", String.format("%s - %5.2f", categories.get(j).GetTitle(), categories.get(j).GetWeight()));
                 childList.add( child );
             }
             result.add(childList);

@@ -3,6 +3,7 @@ package ru.iate.cpi.db.manager;
 import android.content.Context;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.UpdateBuilder;
 import ru.iate.cpi.R;
 import ru.iate.cpi.db.helper.OrmLiteDatabaseHelper;
 import ru.iate.cpi.db.table.Category;
@@ -54,6 +55,20 @@ public class CategoryManager {
             QueryBuilder<Category,Integer> daoCategories = _db.getCategoryDao().queryBuilder();
             daoCategories.orderBy(Category.CATEGORY_CODE_FIELD, true);
             return daoCategories.query();
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
+
+    public void UpdateCategory(int categoryId, float weight) throws Exception{
+        try {
+            UpdateBuilder<Category, Integer> updateBuilder = _db.getCategoryDao().updateBuilder();
+            // set the criteria like you would a QueryBuilder
+            updateBuilder.where().eq(Category.CATEGORY_ID_FIELD, categoryId);
+            // update the value of your field(s)
+            updateBuilder.updateColumnValue(Category.CATEGORY_WEIGHT_FIELD /* column */, weight /* value */);
+            updateBuilder.update();
         }
         catch(Exception ex){
             throw ex;
