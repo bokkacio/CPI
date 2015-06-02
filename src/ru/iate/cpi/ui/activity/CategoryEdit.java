@@ -2,9 +2,7 @@ package ru.iate.cpi.ui.activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -15,17 +13,12 @@ import ru.iate.cpi.db.table.Category;
 import ru.iate.cpi.event.CategoriesSourceEvent;
 import ru.iate.cpi.event.EditCategoryEvent;
 import ru.iate.cpi.event.GetCategoriesEvent;
-import ru.iate.cpi.event.StoresSourceEvent;
 import ru.iate.cpi.ui.FormatHelper;
-import ru.iate.cpi.ui.LogTags;
-import ru.iate.cpi.ui.containers.CategoryListContainer;
-import ru.iate.cpi.ui.containers.ListViewElement;
 import ru.iate.cpi.ui.containers.SpinnerElement;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by sanea on 14.04.15.

@@ -9,16 +9,35 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="0.7">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lbl_productCategory"
+                android:text="@string/lbl_categoryGroupList"
                 android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"/>
-        <ListView
+        <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner_productCategoryGroup"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_categoryList"
+                android:textColor="@color/black"
+                android:layout_gravity="center_horizontal"/>
+        <ExpandableListView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/expandable_productCategory" />
     </LinearLayout>
 
     <LinearLayout
@@ -34,7 +53,8 @@
                 android:layout_gravity="center_horizontal"/>
         <ListView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:id="@+id/listView_productsToEdit"/>
     </LinearLayout>
 
     <LinearLayout
@@ -55,13 +75,14 @@
                     android:layout_gravity="center_horizontal"/>
             <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:id="@+id/edit_productTitle"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
+                android:layout_weight="0.6">
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"

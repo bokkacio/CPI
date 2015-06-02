@@ -60,7 +60,7 @@ public class About extends Activity {
                     }
 
                     //start Settings activity
-                    Intent intent = new Intent(pbAppLoadProcess.getContext(), CategoryEdit.class);
+                    Intent intent = new Intent(pbAppLoadProcess.getContext(), ProductEdit.class);
                     startActivity(intent);
 
                 } catch (InterruptedException e) {
