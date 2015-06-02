@@ -156,4 +156,17 @@ public class CpiService extends Service {
             Log.d(LogTags.ERROR_PREFIX, "CpiService - GetCategoriesEvent" + ex.getMessage());
         }
     }
+
+    //update category
+    public void onEventBackgroundThread(EditCategoryEvent event){
+        try {
+
+            CategoryManager manager = new CategoryManager(_context, DatabaseFactory.Get());
+            manager.UpdateCategory(event.categoryId, event.weight);
+            EventBus.getDefault().post(new CategoriesSourceEvent(manager.GetCategories()));
+        }
+        catch (Exception ex){
+            Log.d(LogTags.ERROR_PREFIX, "CpiService - AddStoreEvent" + ex.getMessage());
+        }
+    }
 }

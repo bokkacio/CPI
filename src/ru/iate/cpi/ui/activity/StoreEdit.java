@@ -36,6 +36,12 @@ public class StoreEdit extends Activity {
         initComponents();
     }
 
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
     private void initComponents(){
         listViewStoresToEdit = (ListView)findViewById(R.id.listView_storesToEdit);
         editTextStoreTitle = (EditText)findViewById(R.id.editText_storeTitle);

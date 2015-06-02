@@ -13,7 +13,10 @@ import de.greenrobot.event.EventBus;
 import ru.iate.cpi.R;
 import ru.iate.cpi.db.table.Category;
 import ru.iate.cpi.event.CategoriesSourceEvent;
+import ru.iate.cpi.event.EditCategoryEvent;
 import ru.iate.cpi.event.GetCategoriesEvent;
+import ru.iate.cpi.event.StoresSourceEvent;
+import ru.iate.cpi.ui.FormatHelper;
 import ru.iate.cpi.ui.LogTags;
 import ru.iate.cpi.ui.containers.CategoryListContainer;
 import ru.iate.cpi.ui.containers.ListViewElement;
@@ -22,6 +25,7 @@ import ru.iate.cpi.ui.containers.SpinnerElement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by sanea on 14.04.15.
@@ -48,6 +52,12 @@ public class CategoryEdit extends Activity{
         initComponents();
     }
 
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
     //Extract categories from DB
     public void onEventMainThread(CategoriesSourceEvent event){
         categories = event.Categories;
@@ -66,10 +76,29 @@ public class CategoryEdit extends Activity{
 
         initSpinner();
         expandableCategoryItems.setAdapter(getExpandableAdapter());
+        editCategoryWeight.setText("");
+        //hide keyboard
+        inputManager.hideSoftInputFromWindow(editCategoryWeight.getWindowToken(), 0);
+        selectedItem = null;
     }
 
     public void changeCategoryWeight(View view){
-
+        String newValue = editCategoryWeight.getText().toString();
+        float newWeight;
+        if(newValue == null || newValue.equals("") || selectedItem == null)
+            return;
+        try
+        {
+            newWeight = Float.valueOf(newValue).floatValue();
+        }
+        catch (NumberFormatException nfe)
+        {
+            nfe.getMessage();
+            Toast.makeText(this, "Неверный формат", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        EventBus.getDefault().post(new EditCategoryEvent(newWeight, selectedItem.GetId()));
+        Toast.makeText(this, "Значение сохранено", Toast.LENGTH_SHORT).show();
     }
 
     private void initComponents(){
@@ -90,6 +119,7 @@ public class CategoryEdit extends Activity{
             expandableCategoryItems.setAdapter(getExpandableAdapter());
         }
 
+        //TODO: how to set null to selectedItem after deselection
         expandableCategoryItems.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
@@ -100,7 +130,7 @@ public class CategoryEdit extends Activity{
                 for (Category category : categories)
                     if(childCode.equals(category.GetCode())){
                         selectedItem = category;
-                        editCategoryWeight.setText(selectedItem.GetWeight() + "");
+                        editCategoryWeight.setText(FormatHelper.GetFloat(selectedItem.GetWeight()));
                         break;
                     }
                 return false;
@@ -166,7 +196,8 @@ public class CategoryEdit extends Activity{
                     continue;
                 HashMap child = new HashMap();
                 child.put("itemCode", categories.get(j).GetCode());
-                child.put("itemTitle", String.format("%s - %5.2f", categories.get(j).GetTitle(), categories.get(j).GetWeight()));
+                child.put("itemCodeWeight", String.format("%s - %S", categories.get(j).GetCode(), FormatHelper.GetFloat(categories.get(j).GetWeight())));
+                child.put("itemTitle", categories.get(j).GetTitle());
                 childList.add( child );
             }
             result.add(childList);
@@ -185,7 +216,7 @@ public class CategoryEdit extends Activity{
                         new int[] { R.id.expandable_categorySubGroupCode, R.id.expandable_categorySubGroupTitle },
                         getChildList(),              // childData describes second-level entries.
                         R.layout.category_child_item,             // Layout for sub-level entries(second level).
-                        new String[] {"itemCode", "itemTitle"},      // Keys in childData maps to display.
+                        new String[] {"itemCodeWeight", "itemTitle"},      // Keys in childData maps to display.
                         // Data under the keys above go into these TextViews.
                         new int[] { R.id.expandable_categoryItemCode, R.id.expandable_categoryItemTitle}
                 );
