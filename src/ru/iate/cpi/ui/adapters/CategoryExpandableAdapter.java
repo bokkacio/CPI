@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class CategoryExpandableAdapter {
     private final Context _context;
-    private final List<Category> _subGroupCategories, _categories;
+    private List<Category> _subGroupCategories, _categories;
 
     public static final String SUB_GROUP_CODE = "subGroupCode";
     public static final String SUB_GROUP_TITLE = "subGroupTitle";
@@ -23,10 +23,8 @@ public class CategoryExpandableAdapter {
     public static final String ITEM_CODE_WEIGHT = "itemCodeWeight";
     public static final String ITEM_TITLE = "itemTitle";
 
-    public CategoryExpandableAdapter(Context context, List<Category> subGroupCategories, List<Category> categories){
+    public CategoryExpandableAdapter(Context context){
         _context = context;
-        _subGroupCategories = subGroupCategories;
-        _categories = categories;
     }
 
     /*create the HashMap for the group  */
@@ -62,7 +60,10 @@ public class CategoryExpandableAdapter {
         return result;
     }
 
-    public SimpleExpandableListAdapter getExpandableAdapter(){
+    public SimpleExpandableListAdapter getExpandableAdapter(List<Category> subGroupCategories, List<Category> categories){
+        _categories = categories;
+        _subGroupCategories = subGroupCategories;
+
         SimpleExpandableListAdapter expListAdapter =
                 new SimpleExpandableListAdapter(
                         _context,

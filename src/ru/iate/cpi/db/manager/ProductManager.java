@@ -29,10 +29,10 @@ public class ProductManager {
         }
     }
 
-    public void AddProduct(Product newProduct) throws Exception{
+    public void AddProduct(String title, int categoryId) throws Exception{
         try {
             Dao<Product,Integer> daoProducts = _db.getProductDao();
-            daoProducts.create(newProduct);
+            daoProducts.create(new Product(title, categoryId));
         }
         catch (Exception ex){
             throw ex;

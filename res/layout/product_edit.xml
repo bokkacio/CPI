@@ -92,6 +92,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="@string/lbl_productAdd"
+                        android:onClick="DeleteProduct"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
             <LinearLayout
@@ -103,6 +104,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="@string/lbl_productRemove"
+                        android:onClick="AddProduct"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
         </LinearLayout>

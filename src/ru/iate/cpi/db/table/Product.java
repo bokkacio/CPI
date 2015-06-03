@@ -18,12 +18,29 @@ public class Product {
         //needed by ormlite
     }
 
+    public Product(String title, int categoryId){
+        this.Title = title;
+        this.CategoryId = categoryId;
+    }
+
     @DatabaseField(generatedId = true, columnName = PRODUCT_ID_FIELD)
     private int Id;
 
     @DatabaseField(canBeNull = false, index = true, dataType = DataType.INTEGER, columnName = Category.CATEGORY_ID_FIELD)
     private int CategoryId;
 
-    @DatabaseField(canBeNull = false, dataType = DataType.STRING, columnName = PRODUCT_TITLE_FIELD)
+    @DatabaseField(canBeNull = false, unique = true, dataType = DataType.STRING, columnName = PRODUCT_TITLE_FIELD)
     private String Title;
+
+    public int GetId(){
+        return this.Id;
+    }
+
+    public int GetCategoryId(){
+        return this.CategoryId;
+    }
+
+    public String GetTitle(){
+        return this.Title;
+    }
 }

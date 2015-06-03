@@ -18,6 +18,10 @@ public class Quantity {
         //needed by ormlite
     }
 
+    public Quantity(String title){
+        this.Title = title;
+    }
+
     @DatabaseField(generatedId = true, columnName = QUANTITY_ID_FIELD)
     private int Id;
 
