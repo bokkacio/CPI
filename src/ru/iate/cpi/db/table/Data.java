@@ -18,6 +18,22 @@ public class Data {
         //needed by ormlite
     }
 
+    public Data(int storeId,
+                int categoryId,
+                int productId,
+                int quantityId,
+                int regionId,
+                int price,
+                Date submitDate){
+        this.StoreId = storeId;
+        this.CategoryId = categoryId;
+        this.ProductId = productId;
+        this.QuantityId = quantityId;
+        this.RegionId = regionId;
+        this.Price = price;
+        this.SubmitDate = submitDate;
+    }
+
     @DatabaseField(generatedId = true, columnName = DATA_ID_FIELD)
     private int Id;
 
@@ -41,4 +57,16 @@ public class Data {
 
     @DatabaseField(canBeNull = false, dataType = DataType.DATE, columnName = DATA_SUBMIT_DATE_FIELD)
     private Date SubmitDate;
+
+    public int GetId(){
+        return this.Id;
+    }
+
+    public int GetPrice(){
+        return this.Price;
+    }
+
+    public Date GetSubmitDate(){
+        return this.SubmitDate;
+    }
 }

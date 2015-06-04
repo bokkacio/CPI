@@ -8,7 +8,6 @@ import android.util.Log;
 import de.greenrobot.event.EventBus;
 import ru.iate.cpi.db.DatabaseFactory;
 import ru.iate.cpi.db.manager.*;
-import ru.iate.cpi.db.table.Category;
 import ru.iate.cpi.db.table.Region;
 import ru.iate.cpi.db.table.Settings;
 import ru.iate.cpi.event.*;
@@ -210,6 +209,45 @@ public class CpiService extends Service {
         }
         catch (Exception ex){
             Log.d(LogTags.ERROR_PREFIX, "CpiService - DeleteProductEvent" + ex.getMessage());
+        }
+    }
+
+    //extract prices and requisites
+    public void onEventBackgroundThread(GetPricesAndRequisitesEvent event){
+        try {
+            CategoryManager categoryManager = new CategoryManager(_context, DatabaseFactory.Get());
+            ProductManager productManager = new ProductManager(DatabaseFactory.Get());
+            StoreManager storeManager = new StoreManager(DatabaseFactory.Get());
+            QuantityManager quantityManager = new QuantityManager(_context, DatabaseFactory.Get());
+            DataManager dataManager = new DataManager(DatabaseFactory.Get());
+            SettingsManager settingsManager = new SettingsManager(DatabaseFactory.Get());
+
+            Settings currentSettings = settingsManager.GetSettingsInfo();
+
+            EventBus.getDefault().post(new PricesAndRequisitesSourceEvent(
+                    categoryManager.GetCategories(),
+                    productManager.GetProducts(),
+                    storeManager.GetStores(),
+                    quantityManager.GetQuantities(),
+                    dataManager.GetData(currentSettings.GetWorkingPeriod(), currentSettings.GetRegionId()),
+                    settingsManager.GetSettingsInfo()));
+        }
+        catch (Exception ex){
+            Log.d(LogTags.ERROR_PREFIX, "CpiService - GetPricesAndRequisitesEvent" + ex.getMessage());
+        }
+    }
+
+    //extract prices
+    public void onEventBackgroundThread(GetPricesEvent event){
+        try {
+            DataManager dataManager = new DataManager(DatabaseFactory.Get());
+            SettingsManager settingsManager = new SettingsManager(DatabaseFactory.Get());
+            Settings currentSettings = settingsManager.GetSettingsInfo();
+
+            EventBus.getDefault().post(new PricesSourceEvent(dataManager.GetData(currentSettings.GetWorkingPeriod(), currentSettings.GetRegionId())));
+        }
+        catch (Exception ex){
+            Log.d(LogTags.ERROR_PREFIX, "CpiService - GetPricesEvent" + ex.getMessage());
         }
     }
 }
