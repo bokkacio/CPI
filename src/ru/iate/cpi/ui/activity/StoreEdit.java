@@ -2,8 +2,11 @@ package ru.iate.cpi.ui.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -12,6 +15,7 @@ import de.greenrobot.event.EventBus;
 import ru.iate.cpi.R;
 import ru.iate.cpi.db.table.Store;
 import ru.iate.cpi.event.*;
+import ru.iate.cpi.ui.OptionMenuCodes;
 import ru.iate.cpi.ui.containers.ListViewElement;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +44,33 @@ public class StoreEdit extends Activity {
     public void onStop() {
         EventBus.getDefault().unregister(this);
         super.onStop();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, OptionMenuCodes.DATA_INPUT_ACTIVITY, 0, OptionMenuCodes.DATA_INPUT_ACTIVITY_STR);
+        menu.add(0, OptionMenuCodes.EXIT, 1, OptionMenuCodes.EXIT_STR);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case OptionMenuCodes.DATA_INPUT_ACTIVITY:
+            {
+                //start DataInput activity
+                Intent intent = new Intent(this, DataInput.class);
+                startActivityForResult(intent, OptionMenuCodes.DATA_INPUT_ACTIVITY);
+                break;
+            }
+            case OptionMenuCodes.EXIT:
+            {
+                setResult(OptionMenuCodes.EXIT);
+                break;
+            }
+        }
+        finish();
+        return super.onOptionsItemSelected(item);
     }
 
     private void initComponents(){
@@ -108,7 +139,7 @@ public class StoreEdit extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                for (int i=0; i < listViewStoresToEdit.getChildCount(); i++){
+                for (int i = 0; i < listViewStoresToEdit.getChildCount(); i++) {
                     View listElement = listViewStoresToEdit.getChildAt(i);
                     listElement.setBackgroundColor(getResources().getColor(R.color.mint));
                 }
@@ -116,5 +147,14 @@ public class StoreEdit extends Activity {
                 view.setBackgroundColor(Color.CYAN);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == OptionMenuCodes.EXIT)
+        {
+            setResult(OptionMenuCodes.EXIT);
+            finish();
+        }
     }
 }

@@ -221,7 +221,6 @@ public class CpiService extends Service {
             QuantityManager quantityManager = new QuantityManager(_context, DatabaseFactory.Get());
             DataManager dataManager = new DataManager(DatabaseFactory.Get());
             SettingsManager settingsManager = new SettingsManager(DatabaseFactory.Get());
-
             Settings currentSettings = settingsManager.GetSettingsInfo();
 
             EventBus.getDefault().post(new PricesAndRequisitesSourceEvent(

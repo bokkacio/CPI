@@ -27,7 +27,7 @@ public class QuantityManager {
     public void FillQuantities() throws Exception{
         String line;
         Quantity quantity;
-        InputStream sourceStream = _context.getResources().openRawResource(R.raw.cpi_regions);
+        InputStream sourceStream = _context.getResources().openRawResource(R.raw.cpi_amount_types);
         BufferedReader r = new BufferedReader(new InputStreamReader(sourceStream));
 
         try {

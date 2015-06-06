@@ -1,15 +1,17 @@
 package ru.iate.cpi.ui.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import de.greenrobot.event.EventBus;
 import ru.iate.cpi.R;
 import ru.iate.cpi.db.table.Region;
 import ru.iate.cpi.event.*;
-import ru.iate.cpi.ui.LogTags;
+import ru.iate.cpi.ui.OptionMenuCodes;
 import ru.iate.cpi.ui.containers.SpinnerElement;
 
 import java.text.SimpleDateFormat;
@@ -40,6 +42,33 @@ public class Settings extends Activity implements AdapterView.OnItemSelectedList
     public void onStop() {
         EventBus.getDefault().unregister(this);
         super.onStop();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, OptionMenuCodes.DATA_INPUT_ACTIVITY, 0, OptionMenuCodes.DATA_INPUT_ACTIVITY_STR);
+        menu.add(0, OptionMenuCodes.EXIT, 1, OptionMenuCodes.EXIT_STR);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case OptionMenuCodes.DATA_INPUT_ACTIVITY:
+            {
+                //start DataInput activity
+                Intent intent = new Intent(this, DataInput.class);
+                startActivityForResult(intent, OptionMenuCodes.DATA_INPUT_ACTIVITY);
+                break;
+            }
+            case OptionMenuCodes.EXIT:
+            {
+                setResult(OptionMenuCodes.EXIT);
+                break;
+            }
+        }
+        finish();
+        return super.onOptionsItemSelected(item);
     }
 
     private void initComponents(){
@@ -107,6 +136,12 @@ public class Settings extends Activity implements AdapterView.OnItemSelectedList
         EventBus.getDefault().post(new AddSettingEvent(new ru.iate.cpi.db.table.Settings(selectedItem.Id, pickerDate)));
     }
 
+    public void onDataInputClick(View view) {
+        //start DataInput activity
+        Intent intent = new Intent(this, DataInput.class);
+        startActivity(intent);
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos,long id) {
         spinnerRegionCode.setSelection(pos);
@@ -124,5 +159,14 @@ public class Settings extends Activity implements AdapterView.OnItemSelectedList
                 android.R.layout.simple_spinner_item, elements);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == OptionMenuCodes.EXIT)
+        {
+            setResult(OptionMenuCodes.EXIT);
+            finish();
+        }
     }
 }

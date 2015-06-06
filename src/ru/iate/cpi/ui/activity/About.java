@@ -10,6 +10,7 @@ import ru.iate.cpi.R;
 import ru.iate.cpi.event.InitDatabaseEvent;
 import ru.iate.cpi.service.CpiService;
 import ru.iate.cpi.ui.LogTags;
+import ru.iate.cpi.ui.OptionMenuCodes;
 
 import java.util.concurrent.TimeUnit;
 
@@ -60,8 +61,8 @@ public class About extends Activity {
                     }
 
                     //start Settings activity
-                    Intent intent = new Intent(pbAppLoadProcess.getContext(), DataInput.class);
-                    startActivity(intent);
+                    Intent intent = new Intent(pbAppLoadProcess.getContext(), ru.iate.cpi.ui.activity.Settings.class);
+                    startActivityForResult(intent, OptionMenuCodes.SETTINGS_ACTIVITY);
 
                 } catch (InterruptedException e) {
                     Log.d(LogTags.ERROR_PREFIX, e.getMessage());
@@ -69,5 +70,11 @@ public class About extends Activity {
             }
         });
         uiThread.start();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //Close app in any way
+        finish();
     }
 }
