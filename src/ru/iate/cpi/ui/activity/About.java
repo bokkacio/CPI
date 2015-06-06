@@ -50,7 +50,7 @@ public class About extends Activity {
         Thread uiThread = new Thread( new Runnable() {
             public void run() {
                 try {
-                    for (int i = 1; i <= MAX_PROGRESS; i++)
+                    for (int i = 0; i <= MAX_PROGRESS; i+=5)
                     {
                         //init database in the service
                         if(i == MAX_PROGRESS/2)

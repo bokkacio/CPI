@@ -61,15 +61,16 @@ public class StoreEdit extends Activity {
                 //start DataInput activity
                 Intent intent = new Intent(this, DataInput.class);
                 startActivityForResult(intent, OptionMenuCodes.DATA_INPUT_ACTIVITY);
+                finish();
                 break;
             }
             case OptionMenuCodes.EXIT:
             {
                 setResult(OptionMenuCodes.EXIT);
+                finish();
                 break;
             }
         }
-        finish();
         return super.onOptionsItemSelected(item);
     }
 

@@ -6,6 +6,7 @@
     <string name="ipc_short">CPI</string>
     <string name="soft_version">Версия: 1.0</string>
     <string name="copyright_info">(c) Лаврик Вера</string>
+    <string name="lbl_aboutLoading">Загрузка данных...</string>
     <!--settings.xml-->
     <string name="lbl_regionCode">Код региона</string>
     <string name="lbl_regionName">Наименование региона</string>

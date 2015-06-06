@@ -59,15 +59,16 @@ public class Settings extends Activity implements AdapterView.OnItemSelectedList
                 //start DataInput activity
                 Intent intent = new Intent(this, DataInput.class);
                 startActivityForResult(intent, OptionMenuCodes.DATA_INPUT_ACTIVITY);
+                finish();
                 break;
             }
             case OptionMenuCodes.EXIT:
             {
                 setResult(OptionMenuCodes.EXIT);
+                finish();
                 break;
             }
         }
-        finish();
         return super.onOptionsItemSelected(item);
     }
 
@@ -134,12 +135,6 @@ public class Settings extends Activity implements AdapterView.OnItemSelectedList
         Date pickerDate = new Date(workingPeriodPicker.getYear(), workingPeriodPicker.getMonth(), workingPeriodPicker.getDayOfMonth());
         SpinnerElement selectedItem = (SpinnerElement)spinnerRegionCode.getSelectedItem();
         EventBus.getDefault().post(new AddSettingEvent(new ru.iate.cpi.db.table.Settings(selectedItem.Id, pickerDate)));
-    }
-
-    public void onDataInputClick(View view) {
-        //start DataInput activity
-        Intent intent = new Intent(this, DataInput.class);
-        startActivity(intent);
     }
 
     @Override
