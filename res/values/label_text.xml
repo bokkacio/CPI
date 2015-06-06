@@ -14,14 +14,13 @@
     <!--data_input.xml-->
     <string name="btn_savePriceForCurrentPeriod">Сохранить цену</string>
     <string name="btn_deletePriceForCurrentPeriod">Удалить цену</string>
-    <string name="lbl_previousPrice">Предыдущая цена</string>
-    <string name="lbl_currentPrice">Текущая цена</string>
+    <string name="lbl_currentPrice">Цена</string>
     <string name="lbl_presetProductAmount">Количество товара</string>
     <string name="lbl_currentShop">Магазин</string>
+    <string name="lbl_currentGroupCategory">Группа</string>
+    <string name="lbl_currentSubGroupCategory">Подгруппа</string>
     <string name="lbl_currentCategory">Категория</string>
     <string name="lbl_currentProduct">Товар</string>
-    <string name="lbl_previousElement">lt</string>
-    <string name="lbl_nextElement">gt</string>
     <!--product_edit.xml-->
     <string name="lbl_productCategory">Категория</string>
     <string name="lbl_productTitle">Товар</string>

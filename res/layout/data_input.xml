@@ -15,43 +15,41 @@
                 android:text="@string/lbl_currentShop"
                 android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"/>
-        <LinearLayout
-                android:orientation="horizontal"
+        <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_previousElement"
-                        android:layout_gravity="center_vertical"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4">
-                <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_nextElement"
-                        android:layout_gravity="center_vertical"/>
-            </LinearLayout>
-        </LinearLayout>
+                android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_currentGroupCategory"
+                android:textColor="@color/black"
+                android:layout_gravity="center_horizontal"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_currentSubGroupCategory"
+                android:textColor="@color/black"
+                android:layout_gravity="center_horizontal"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
     </LinearLayout>
 
     <LinearLayout
@@ -65,43 +63,9 @@
                 android:text="@string/lbl_currentCategory"
                 android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"/>
-        <LinearLayout
-                android:orientation="horizontal"
+        <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_previousElement"
-                        android:layout_gravity="center_vertical"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4">
-                <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_nextElement"
-                        android:layout_gravity="center_vertical"/>
-            </LinearLayout>
-        </LinearLayout>
+                android:layout_height="match_parent"/>
     </LinearLayout>
 
     <LinearLayout
@@ -112,46 +76,12 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lbl_currentProduct"
+                android:text="@string/lbl_currentShop"
                 android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"/>
-        <LinearLayout
-                android:orientation="horizontal"
+        <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_previousElement"
-                        android:layout_gravity="center_vertical"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4">
-                <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-                <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="@string/lbl_nextElement"
-                        android:layout_gravity="center_vertical"/>
-            </LinearLayout>
-        </LinearLayout>
+                android:layout_height="match_parent"/>
     </LinearLayout>
 
     <LinearLayout
@@ -169,24 +99,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1">
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="2">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/lbl_previousPrice"
-                            android:textColor="@color/black"
-                            android:layout_gravity="center_horizontal"/>
-                    <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:inputType="number"
-                            android:ems="10"
-                            android:layout_gravity="center_horizontal"/>
-                </LinearLayout>
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
