@@ -18,7 +18,7 @@ public class Category {
     public final static String CATEGORY_WEIGHT_FIELD = "category_weight";
 
     public final static int LEVEL_GROUP = 1;
-    public final static int LEVEL_SUBGROUP = 2;
+    public final static int LEVEL_SUBGROUP = 3;
     public final static int LEVEL_ITEM = 6;
 
     public Category(){

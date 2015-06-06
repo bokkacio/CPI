@@ -17,7 +17,8 @@
                 android:layout_gravity="center_horizontal"/>
         <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:id="@+id/spinner_dataStore"/>
     </LinearLayout>
 
     <LinearLayout
@@ -33,7 +34,8 @@
                 android:layout_gravity="center_horizontal"/>
         <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:id="@+id/spinner_dataCategoryGroup"/>
     </LinearLayout>
 
     <LinearLayout
@@ -49,7 +51,8 @@
                 android:layout_gravity="center_horizontal"/>
         <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:id="@+id/spinner_dataCategorySubGroup"/>
     </LinearLayout>
 
     <LinearLayout
@@ -65,7 +68,8 @@
                 android:layout_gravity="center_horizontal"/>
         <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:id="@+id/spinner_dataCategory"/>
     </LinearLayout>
 
     <LinearLayout
@@ -76,12 +80,13 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lbl_currentShop"
+                android:text="@string/lbl_currentProduct"
                 android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"/>
         <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:id="@+id/spinner_dataProduct"/>
     </LinearLayout>
 
     <LinearLayout
@@ -115,7 +120,8 @@
                             android:layout_height="match_parent"
                             android:inputType="number"
                             android:ems="10"
-                            android:layout_gravity="center_horizontal"/>
+                            android:layout_gravity="center_horizontal"
+                            android:id="@+id/edit_dataPrice"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -131,7 +137,8 @@
                         android:layout_gravity="center_horizontal"/>
                 <Spinner
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent"
+                        android:id="@+id/spinner_dataQuantity"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout

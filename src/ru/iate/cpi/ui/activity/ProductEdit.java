@@ -75,7 +75,7 @@ public class ProductEdit extends Activity {
                 subGroupCategories.add(category);
 
         initSpinner();
-        expandableCategoryItems.setAdapter(expandableAdapter.getExpandableAdapter(subGroupCategories, categories));
+        expandableCategoryItems.setAdapter(expandableAdapter.getExpandableAdapter(selectedGroup, categories));
         initListView();
         restoreEditText();
         selectedCategory = null;
@@ -97,7 +97,7 @@ public class ProductEdit extends Activity {
             EventBus.getDefault().post(new GetProductsAndCategoriesEvent());
         else {
             initSpinner();
-            expandableCategoryItems.setAdapter(expandableAdapter.getExpandableAdapter(subGroupCategories, categories));
+            expandableCategoryItems.setAdapter(expandableAdapter.getExpandableAdapter(selectedGroup, categories));
             initListView();
         }
 
@@ -176,7 +176,7 @@ public class ProductEdit extends Activity {
                             categories.get(i).GetCode().contains(selectedGroup.GetCode()))
                         subGroupCategories.add(categories.get(i));
 
-                expandableCategoryItems.setAdapter(expandableAdapter.getExpandableAdapter(subGroupCategories, categories));
+                expandableCategoryItems.setAdapter(expandableAdapter.getExpandableAdapter(selectedGroup, categories));
             }
 
             @Override

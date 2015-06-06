@@ -27,4 +27,12 @@ public class Quantity {
 
     @DatabaseField(canBeNull = false, dataType = DataType.STRING, columnName = QUANTITY_TITLE_FIELD)
     private String Title;
+
+    public int GetId(){
+        return this.Id;
+    }
+
+    public String GetTitle(){
+        return this.Title;
+    }
 }

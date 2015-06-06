@@ -15,7 +15,9 @@ import java.util.List;
  */
 public class CategoryExpandableAdapter {
     private final Context _context;
-    private List<Category> _subGroupCategories, _categories;
+    private List<Category> subGroupCategories = new ArrayList<Category>();
+    private List<Category> categories;
+    private Category groupCategory;
 
     public static final String SUB_GROUP_CODE = "subGroupCode";
     public static final String SUB_GROUP_TITLE = "subGroupTitle";
@@ -31,10 +33,16 @@ public class CategoryExpandableAdapter {
     @SuppressWarnings("unchecked")
     private List getGroupList() {
         ArrayList result = new ArrayList();
-        for(int i = 0 ; i < _subGroupCategories.size() ; ++i ) {
+        for(int i = 0 ; i < categories.size() ; ++i ) {
+            //not subgroup or not subCode
+            if(categories.get(i).GetLevel() != Category.LEVEL_SUBGROUP ||
+                !categories.get(i).GetCode().contains(groupCategory.GetCode()))
+                continue;
+
+            subGroupCategories.add(categories.get(i));
             HashMap<String, Object> group = new HashMap<String, Object>();
-            group.put(SUB_GROUP_CODE, _subGroupCategories.get(i).GetCode());
-            group.put(SUB_GROUP_TITLE, _subGroupCategories.get(i).GetTitle());
+            group.put(SUB_GROUP_CODE, categories.get(i).GetCode());
+            group.put(SUB_GROUP_TITLE, categories.get(i).GetTitle());
             result.add(group);
         }
         return (List)result;
@@ -44,15 +52,17 @@ public class CategoryExpandableAdapter {
     @SuppressWarnings("unchecked")
     private List getChildList() {
         ArrayList result = new ArrayList();
-        for( int i = 0 ; i < _subGroupCategories.size() ; ++i ) {
+        for( int i = 0 ; i < subGroupCategories.size() ; ++i ) {
             ArrayList childList = new ArrayList();
-            for( int j = 0 ; j < _categories.size() ; j++ ) {
-                if(!_categories.get(j).GetCode().contains(_subGroupCategories.get(i).GetCode()))
+            for( int j = 0 ; j < categories.size() ; j++ ) {
+                if(categories.get(i).GetLevel() != Category.LEVEL_ITEM ||
+                    !categories.get(j).GetCode().contains(subGroupCategories.get(i).GetCode()))
                     continue;
+
                 HashMap child = new HashMap();
-                child.put(ITEM_CODE, _categories.get(j).GetCode());
-                child.put(ITEM_CODE_WEIGHT, String.format("%s - %S", _categories.get(j).GetCode(), FormatHelper.GetFloat(_categories.get(j).GetWeight())));
-                child.put(ITEM_TITLE, _categories.get(j).GetTitle());
+                child.put(ITEM_CODE, categories.get(j).GetCode());
+                child.put(ITEM_CODE_WEIGHT, String.format("%s - %S", categories.get(j).GetCode(), FormatHelper.GetFloat(categories.get(j).GetWeight())));
+                child.put(ITEM_TITLE, categories.get(j).GetTitle());
                 childList.add( child );
             }
             result.add(childList);
@@ -60,9 +70,9 @@ public class CategoryExpandableAdapter {
         return result;
     }
 
-    public SimpleExpandableListAdapter getExpandableAdapter(List<Category> subGroupCategories, List<Category> categories){
-        _categories = categories;
-        _subGroupCategories = subGroupCategories;
+    public SimpleExpandableListAdapter getExpandableAdapter(Category groupCategory, List<Category> categories){
+        this.categories = categories;
+        this.groupCategory = groupCategory;
 
         SimpleExpandableListAdapter expListAdapter =
                 new SimpleExpandableListAdapter(

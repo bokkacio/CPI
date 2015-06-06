@@ -32,16 +32,10 @@ public class DataManager {
         }
     }
 
-    public void AddData(int storeId,
-                         int categoryId,
-                         int productId,
-                         int quantityId,
-                         int regionId,
-                         int price,
-                         Date submitDate) throws Exception{
+    public void AddData(Data priceData) throws Exception{
         try {
             Dao<Data,Integer> dao = _db.getDataDao();
-            dao.create(new Data(storeId, categoryId, productId, quantityId, regionId, price, submitDate));
+            dao.create(priceData);
         }
         catch (Exception ex){
             throw ex;

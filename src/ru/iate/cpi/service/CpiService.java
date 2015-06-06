@@ -250,4 +250,36 @@ public class CpiService extends Service {
             Log.d(LogTags.ERROR_PREFIX, "CpiService - GetPricesEvent" + ex.getMessage());
         }
     }
+
+    //add price
+    public void onEventBackgroundThread(AddPriceEvent event){
+        try {
+            DataManager dataManager = new DataManager(DatabaseFactory.Get());
+            dataManager.AddData(event.PriceData);
+
+            SettingsManager settingsManager = new SettingsManager(DatabaseFactory.Get());
+            Settings currentSettings = settingsManager.GetSettingsInfo();
+
+            EventBus.getDefault().post(new PricesSourceEvent(dataManager.GetData(currentSettings.GetWorkingPeriod(), currentSettings.GetRegionId())));
+        }
+        catch (Exception ex){
+            Log.d(LogTags.ERROR_PREFIX, "CpiService - AddPriceEvent" + ex.getMessage());
+        }
+    }
+
+    //remove price
+    public void onEventBackgroundThread(DeletePriceEvent event){
+        try {
+            DataManager dataManager = new DataManager(DatabaseFactory.Get());
+            dataManager.DeleteData(event.PriceId);
+
+            SettingsManager settingsManager = new SettingsManager(DatabaseFactory.Get());
+            Settings currentSettings = settingsManager.GetSettingsInfo();
+
+            EventBus.getDefault().post(new PricesSourceEvent(dataManager.GetData(currentSettings.GetWorkingPeriod(), currentSettings.GetRegionId())));
+        }
+        catch (Exception ex){
+            Log.d(LogTags.ERROR_PREFIX, "CpiService - DeletePriceEvent" + ex.getMessage());
+        }
+    }
 }
