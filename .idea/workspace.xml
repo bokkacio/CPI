@@ -50,14 +50,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b0ae49d3-539d-4820-84ad-c1ba4f24abbe" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/About.java" afterPath="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/About.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/CategoryEdit.java" afterPath="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/CategoryEdit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/ProductEdit.java" afterPath="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/ProductEdit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/Settings.java" afterPath="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/Settings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/StoreEdit.java" afterPath="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/StoreEdit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/about.xml" afterPath="$PROJECT_DIR$/res/layout/about.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/label_text.xml" afterPath="$PROJECT_DIR$/res/values/label_text.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/settings.xml" afterPath="$PROJECT_DIR$/res/layout/settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/iate/cpi/ui/adapters/CategoryExpandableAdapter.java" afterPath="$PROJECT_DIR$/src/ru/iate/cpi/ui/adapters/CategoryExpandableAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/category_edit.xml" afterPath="$PROJECT_DIR$/res/layout/category_edit.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/data_input.xml" afterPath="$PROJECT_DIR$/res/layout/data_input.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/product_edit.xml" afterPath="$PROJECT_DIR$/res/layout/product_edit.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cpi.iws" />
@@ -119,87 +116,7 @@
     <favorites_list name="cpi" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="ProductEdit.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/ProductEdit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="89" column="5" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#6713#6729#0" expanded="true" />
-                <element signature="e#6978#6994#0" expanded="true" />
-                <element signature="e#8871#8888#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CategoryEdit.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/CategoryEdit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="25" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="25" />
-              <folding>
-                <element signature="e#6061#6077#0" expanded="true" />
-                <element signature="e#7981#7997#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataInput.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/DataInput.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5928#5944#0" expanded="true" />
-                <element signature="e#6286#6302#0" expanded="true" />
-                <element signature="e#6637#6653#0" expanded="true" />
-                <element signature="e#7135#7151#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Settings.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/Settings.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6785714">
-              <caret line="152" column="89" selection-start-line="152" selection-start-column="89" selection-end-line="152" selection-end-column="89" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="label_text.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/label_text.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="54" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/settings.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.645162">
-              <caret line="85" column="62" selection-start-line="85" selection-start-column="62" selection-end-line="85" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -242,14 +159,12 @@
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/db/manager/CategoryManager.java" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/event/EditCategoryEvent.java" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/ui/FormatHelper.java" />
-        <option value="$PROJECT_DIR$/res/layout/category_edit.xml" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/ui/adapters/CategoryExpandableListAdapter.java" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/event/ProductsAndCategoriesSourceEvent.java" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/event/AddProductEvent.java" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/event/DeleteProductEvent.java" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/db/manager/ProductManager.java" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/db/table/Product.java" />
-        <option value="$PROJECT_DIR$/res/layout/product_edit.xml" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/db/manager/AmountTypesManager.java" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/db/manager/PriceManager.java" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/event/PriceRequisitesSourceEvent.java" />
@@ -261,9 +176,6 @@
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/db/manager/DataManager.java" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/event/DeletePriceEvent.java" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/db/table/Data.java" />
-        <option value="$PROJECT_DIR$/res/layout/data_input.xml" />
-        <option value="$PROJECT_DIR$/src/ru/iate/cpi/db/table/Category.java" />
-        <option value="$PROJECT_DIR$/src/ru/iate/cpi/ui/adapters/CategoryExpandableAdapter.java" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/db/table/Quantity.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/db/manager/QuantityManager.java" />
@@ -273,11 +185,16 @@
         <option value="$PROJECT_DIR$/res/values/label_text.xml" />
         <option value="$PROJECT_DIR$/res/layout/about.xml" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/About.java" />
-        <option value="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/CategoryEdit.java" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/StoreEdit.java" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/ProductEdit.java" />
         <option value="$PROJECT_DIR$/res/layout/settings.xml" />
         <option value="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/Settings.java" />
+        <option value="$PROJECT_DIR$/src/ru/iate/cpi/db/table/Category.java" />
+        <option value="$PROJECT_DIR$/src/ru/iate/cpi/ui/adapters/CategoryExpandableAdapter.java" />
+        <option value="$PROJECT_DIR$/res/layout/product_edit.xml" />
+        <option value="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/CategoryEdit.java" />
+        <option value="$PROJECT_DIR$/res/layout/category_edit.xml" />
+        <option value="$PROJECT_DIR$/res/layout/data_input.xml" />
       </list>
     </option>
   </component>
@@ -362,6 +279,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cpi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cpi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cpi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adapters" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1056,7 +999,13 @@
       <option name="project" value="LOCAL" />
       <updated>1433591237789</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Continue  to add  &quot;DataEdit&quot; activity.&#10;Added infinite progress bar">
+      <created>1433593181050</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1433593181050</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1091,7 +1040,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2498618" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17191818" sideWeight="0.4937888" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17191818" sideWeight="0.4937888" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32708332" sideWeight="0.48203427" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.51796573" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -1140,11 +1089,12 @@
     <MESSAGE value="Finish  to add  &quot;ProductEdit&quot; activity" />
     <MESSAGE value="Continue  to add  &quot;DataEdit&quot; activity" />
     <MESSAGE value="Continue  to add  &quot;DataEdit&quot; activity.&#10;Added menus to activities." />
-    <option name="LAST_COMMIT_MESSAGE" value="Continue  to add  &quot;DataEdit&quot; activity.&#10;Added menus to activities." />
+    <MESSAGE value="Continue  to add  &quot;DataEdit&quot; activity.&#10;Added infinite progress bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Continue  to add  &quot;DataEdit&quot; activity.&#10;Added infinite progress bar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1207,17 +1157,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="33" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/category_edit.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2307693">
-          <caret line="40" column="19" selection-start-line="7" selection-start-column="4" selection-end-line="40" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1370,30 +1309,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/product_edit.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37931034">
-          <caret line="78" column="55" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/data_input.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="123" column="62" selection-start-line="123" selection-start-column="62" selection-end-line="123" selection-end-column="62" />
-          <folding>
-            <element signature="e#3385#3413#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/event/PricesSourceEvent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23225807">
@@ -1413,17 +1328,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/ui/adapters/CategoryExpandableAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding>
-            <element signature="e#471#481#0" expanded="true" />
-            <element signature="e#1507#1523#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/db/table/Quantity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1436,14 +1340,6 @@
             <element signature="e#842#843#0" expanded="false" />
             <element signature="e#875#876#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/db/table/Category.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1505,14 +1401,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/service/CpiService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="6.4788275">
-          <caret line="234" column="102" selection-start-line="234" selection-start-column="11" selection-end-line="234" selection-end-column="102" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/db/table/Data.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34201956">
@@ -1545,10 +1433,10 @@
         <state vertical-scroll-proportion="0.41538462">
           <caret line="72" column="54" selection-start-line="72" selection-start-column="54" selection-end-line="72" selection-end-column="54" />
           <folding>
-            <element signature="e#855#873#0" expanded="true" />
-            <element signature="e#1384#1403#0" expanded="true" />
-            <element signature="e#1914#1936#0" expanded="true" />
-            <element signature="e#2407#2431#0" expanded="true" />
+            <element signature="e#855#873#0" expanded="false" />
+            <element signature="e#1384#1403#0" expanded="false" />
+            <element signature="e#1914#1936#0" expanded="false" />
+            <element signature="e#2407#2431#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1573,44 +1461,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/ProductEdit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="89" column="5" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6713#6729#0" expanded="true" />
-            <element signature="e#6978#6994#0" expanded="true" />
-            <element signature="e#8871#8888#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/CategoryEdit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="25" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="25" />
-          <folding>
-            <element signature="e#6061#6077#0" expanded="true" />
-            <element signature="e#7981#7997#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/DataInput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5928#5944#0" expanded="true" />
-            <element signature="e#6286#6302#0" expanded="true" />
-            <element signature="e#6637#6653#0" expanded="true" />
-            <element signature="e#7135#7151#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/values/label_text.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1632,10 +1482,118 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/Settings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6785714">
-          <caret line="152" column="89" selection-start-line="152" selection-start-column="89" selection-end-line="152" selection-end-column="89" />
+        <state vertical-scroll-proportion="2.840909">
+          <caret line="151" column="64" selection-start-line="151" selection-start-column="64" selection-end-line="151" selection-end-column="64" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/DataInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9512987">
+          <caret line="102" column="13" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#5928#5944#0" expanded="false" />
+            <element signature="e#5928#5944#0" expanded="false" />
+            <element signature="e#5928#5944#0" expanded="false" />
+            <element signature="e#5928#5944#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/product_edit.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="38" selection-start-line="63" selection-start-column="38" selection-end-line="63" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/db/table/Category.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33441558">
+          <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/ui/adapters/CategoryExpandableAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#981#1011#0" expanded="true" />
+            <element signature="e#1460#1476#0" expanded="true" />
+            <element signature="e#1768#1798#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/CategoryEdit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7077922">
+          <caret line="201" column="5" selection-start-line="201" selection-start-column="5" selection-end-line="201" selection-end-column="5" />
+          <folding>
+            <element signature="e#6327#6343#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/service/CpiService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24025974">
+          <caret line="210" column="93" selection-start-line="210" selection-start-column="12" selection-end-line="210" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/ProductEdit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38474026">
+          <caret line="52" column="8" selection-start-line="52" selection-start-column="8" selection-end-line="52" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#6713#6729#0" expanded="false" />
+            <element signature="e#6978#6994#0" expanded="false" />
+            <element signature="e#6978#6994#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/category_edit.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="40" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/data_input.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.1846154">
+          <caret line="100" column="43" selection-start-line="100" selection-start-column="43" selection-end-line="100" selection-end-column="43" />
+          <folding>
+            <element signature="e#646#671#0" expanded="true" />
+            <element signature="e#1319#1353#0" expanded="true" />
+            <element signature="e#2009#2046#0" expanded="true" />
+            <element signature="e#2705#2734#0" expanded="true" />
+            <element signature="e#3385#3413#0" expanded="true" />
+            <element signature="e#4543#4584#0" expanded="true" />
+            <element signature="e#5090#5129#0" expanded="true" />
+            <element signature="e#6144#6170#0" expanded="true" />
+            <element signature="e#7170#7203#0" expanded="true" />
           </folding>
         </state>
       </provider>
