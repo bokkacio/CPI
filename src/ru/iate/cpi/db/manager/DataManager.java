@@ -3,6 +3,7 @@ package ru.iate.cpi.db.manager;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.QueryBuilder;
+import com.j256.ormlite.stmt.UpdateBuilder;
 import ru.iate.cpi.db.helper.OrmLiteDatabaseHelper;
 import ru.iate.cpi.db.table.*;
 
@@ -38,6 +39,20 @@ public class DataManager {
             dao.create(priceData);
         }
         catch (Exception ex){
+            throw ex;
+        }
+    }
+
+    public void UpdateData(int priceId, int price) throws Exception{
+        try {
+            UpdateBuilder<Data, Integer> updateBuilder = _db.getDataDao().updateBuilder();
+            // set the criteria like you would a QueryBuilder
+            updateBuilder.where().eq(Data.DATA_ID_FIELD, priceId);
+            // update the value of your field(s)
+            updateBuilder.updateColumnValue(Data.DATA_PRICE_FIELD /* column */, price /* value */);
+            updateBuilder.update();
+        }
+        catch(Exception ex){
             throw ex;
         }
     }

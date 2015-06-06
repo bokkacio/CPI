@@ -18,15 +18,18 @@ public class Data {
         //needed by ormlite
     }
 
+    public Data(int priceId, int price){
+        this.Id = priceId;
+        this.Price = price;
+    }
+
     public Data(int storeId,
-                int categoryId,
                 int productId,
                 int quantityId,
                 int regionId,
                 int price,
                 Date submitDate){
         this.StoreId = storeId;
-        this.CategoryId = categoryId;
         this.ProductId = productId;
         this.QuantityId = quantityId;
         this.RegionId = regionId;
@@ -39,9 +42,6 @@ public class Data {
 
     @DatabaseField(canBeNull = false, index = true, dataType = DataType.INTEGER, columnName = Store.STORE_ID_FIELD)
     private int StoreId;
-
-    @DatabaseField(canBeNull = false, index = true, dataType = DataType.INTEGER, columnName = Category.CATEGORY_ID_FIELD)
-    private int CategoryId;
 
     @DatabaseField(canBeNull = false, index = true, dataType = DataType.INTEGER, columnName = Product.PRODUCT_ID_FIELD)
     private int ProductId;
@@ -60,6 +60,18 @@ public class Data {
 
     public int GetId(){
         return this.Id;
+    }
+
+    public int GetProductId(){
+        return this.ProductId;
+    }
+
+    public int GetStoreId(){
+        return this.StoreId;
+    }
+
+    public int GetQuantityId(){
+        return this.QuantityId;
     }
 
     public int GetPrice(){

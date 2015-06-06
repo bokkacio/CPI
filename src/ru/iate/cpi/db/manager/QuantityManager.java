@@ -1,11 +1,13 @@
 package ru.iate.cpi.db.manager;
 
 import android.content.Context;
+import android.util.Log;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
 import ru.iate.cpi.R;
 import ru.iate.cpi.db.helper.OrmLiteDatabaseHelper;
 import ru.iate.cpi.db.table.Quantity;
+import ru.iate.cpi.ui.LogTags;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

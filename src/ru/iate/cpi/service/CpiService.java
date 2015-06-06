@@ -254,7 +254,10 @@ public class CpiService extends Service {
     public void onEventBackgroundThread(AddPriceEvent event){
         try {
             DataManager dataManager = new DataManager(DatabaseFactory.Get());
-            dataManager.AddData(event.PriceData);
+            if(event.IsNewPrice)
+                dataManager.AddData(event.PriceData);
+            else
+                dataManager.UpdateData(event.PriceData.GetId(), event.PriceData.GetPrice());
 
             SettingsManager settingsManager = new SettingsManager(DatabaseFactory.Get());
             Settings currentSettings = settingsManager.GetSettingsInfo();

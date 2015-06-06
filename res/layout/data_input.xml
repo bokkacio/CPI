@@ -107,7 +107,8 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/btn_deletePriceForCurrentPeriod"
+                        android:text="@string/btn_savePriceForCurrentPeriod"
+                        android:onClick="onSaveDataClick"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
             <LinearLayout
@@ -118,7 +119,8 @@
                 <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="@string/btn_savePriceForCurrentPeriod"
+                        android:text="@string/btn_deletePriceForCurrentPeriod"
+                        android:onClick="onDeleteDataClick"
                         android:layout_gravity="center_vertical"/>
             </LinearLayout>
         </LinearLayout>

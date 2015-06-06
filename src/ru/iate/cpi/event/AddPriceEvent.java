@@ -32,8 +32,10 @@ public class AddPriceEvent {
 //    }
 
     public final Data PriceData;
+    public final boolean IsNewPrice;
 
-    public AddPriceEvent(Data priceData){
+    public AddPriceEvent(Data priceData, boolean isNewPrice){
         this.PriceData = priceData;
+        this.IsNewPrice = isNewPrice;
     }
 }
