@@ -51,10 +51,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b0ae49d3-539d-4820-84ad-c1ba4f24abbe" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/CategoryEdit.java" afterPath="$PROJECT_DIR$/src/ru/iate/cpi/ui/activity/CategoryEdit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/iate/cpi/ui/adapters/CategoryExpandableAdapter.java" afterPath="$PROJECT_DIR$/src/ru/iate/cpi/ui/adapters/CategoryExpandableAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/category_edit.xml" afterPath="$PROJECT_DIR$/res/layout/category_edit.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/data_input.xml" afterPath="$PROJECT_DIR$/res/layout/data_input.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/product_edit.xml" afterPath="$PROJECT_DIR$/res/layout/product_edit.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="cpi.iws" />
@@ -1005,7 +1001,13 @@
       <option name="project" value="LOCAL" />
       <updated>1433593181050</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Fixed layout. Apply custom adapter to &quot;Category&quot; activity">
+      <created>1433599798401</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1433599798401</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1066,6 +1068,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <MESSAGE value="Added gitIgnore file&#10;" />
     <MESSAGE value="Added &quot;About&quot; activity&#10;" />
     <MESSAGE value="Added &quot;About&quot; activity" />
@@ -1090,7 +1093,8 @@
     <MESSAGE value="Continue  to add  &quot;DataEdit&quot; activity" />
     <MESSAGE value="Continue  to add  &quot;DataEdit&quot; activity.&#10;Added menus to activities." />
     <MESSAGE value="Continue  to add  &quot;DataEdit&quot; activity.&#10;Added infinite progress bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Continue  to add  &quot;DataEdit&quot; activity.&#10;Added infinite progress bar" />
+    <MESSAGE value="Fixed layout. Apply custom adapter to &quot;Category&quot; activity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed layout. Apply custom adapter to &quot;Category&quot; activity" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

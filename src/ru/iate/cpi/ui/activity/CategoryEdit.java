@@ -18,6 +18,7 @@ import ru.iate.cpi.event.EditCategoryEvent;
 import ru.iate.cpi.event.GetCategoriesEvent;
 import ru.iate.cpi.ui.FormatHelper;
 import ru.iate.cpi.ui.OptionMenuCodes;
+import ru.iate.cpi.ui.adapters.CategoryExpandableAdapter;
 import ru.iate.cpi.ui.containers.SpinnerElement;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class CategoryEdit extends Activity{
 
     private InputMethodManager inputManager;
 
+    private CategoryExpandableAdapter expandableAdapter;
     private List<Category> categories;
     private List<Category> groupCategories;
     private List<Category> subGroupCategories;
@@ -45,6 +47,7 @@ public class CategoryEdit extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category_edit);
 
+        expandableAdapter = new CategoryExpandableAdapter(this);
         EventBus.getDefault().register(this);
         initComponents();
     }
@@ -100,7 +103,7 @@ public class CategoryEdit extends Activity{
                 subGroupCategories.add(category);
 
         initSpinner();
-        expandableCategoryItems.setAdapter(getExpandableAdapter());
+        expandableCategoryItems.setAdapter(expandableAdapter.getExpandableAdapter(selectedGroup, categories));
         editCategoryWeight.setText("");
         //hide keyboard
         inputManager.hideSoftInputFromWindow(editCategoryWeight.getWindowToken(), 0);
@@ -141,7 +144,7 @@ public class CategoryEdit extends Activity{
             EventBus.getDefault().post(new GetCategoriesEvent());
         else{
             initSpinner();
-            expandableCategoryItems.setAdapter(getExpandableAdapter());
+            expandableCategoryItems.setAdapter(expandableAdapter.getExpandableAdapter(selectedGroup, categories));
         }
 
         //TODO: how to set null to selectedItem after deselection
@@ -189,64 +192,13 @@ public class CategoryEdit extends Activity{
                             categories.get(i).GetCode().contains(selectedGroup.GetCode()))
                         subGroupCategories.add(categories.get(i));
 
-                expandableCategoryItems.setAdapter(getExpandableAdapter());
+                expandableCategoryItems.setAdapter(expandableAdapter.getExpandableAdapter(selectedGroup, categories));
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-    }
-
-    /*create the HashMap for the group  */
-    @SuppressWarnings("unchecked")
-    private List getGroupList() {
-        ArrayList result = new ArrayList();
-        for(int i = 0 ; i < subGroupCategories.size() ; ++i ) {
-            HashMap<String, Object> group = new HashMap<String, Object>();
-            group.put("subGroupCode", subGroupCategories.get(i).GetCode());
-            group.put("subGroupTitle", subGroupCategories.get(i).GetTitle());
-            result.add(group);
-        }
-        return (List)result;
-    }
-
-    /* create the HashMap for the child */
-    @SuppressWarnings("unchecked")
-    private List getChildList() {
-        ArrayList result = new ArrayList();
-        for( int i = 0 ; i < subGroupCategories.size() ; ++i ) {
-            ArrayList childList = new ArrayList();
-            for( int j = 0 ; j < categories.size() ; j++ ) {
-                if(!categories.get(j).GetCode().contains(subGroupCategories.get(i).GetCode()))
-                    continue;
-                HashMap child = new HashMap();
-                child.put("itemCode", categories.get(j).GetCode());
-                child.put("itemCodeWeight", String.format("%s - %S", categories.get(j).GetCode(), FormatHelper.GetFloat(categories.get(j).GetWeight())));
-                child.put("itemTitle", categories.get(j).GetTitle());
-                childList.add( child );
-            }
-            result.add(childList);
-        }
-        return result;
-    }
-
-    private SimpleExpandableListAdapter getExpandableAdapter(){
-        SimpleExpandableListAdapter expListAdapter =
-                new SimpleExpandableListAdapter(
-                        this,
-                        getGroupList(),              // Creating group List.
-                        R.layout.category_group_item,             // Group item layout XML.
-                        new String[] { "subGroupCode", "subGroupTitle" },  // the key of group item.
-                        // ID of each group item.-Data under the key goes into this TextView.
-                        new int[] { R.id.expandable_categorySubGroupCode, R.id.expandable_categorySubGroupTitle },
-                        getChildList(),              // childData describes second-level entries.
-                        R.layout.category_child_item,             // Layout for sub-level entries(second level).
-                        new String[] {"itemCodeWeight", "itemTitle"},      // Keys in childData maps to display.
-                        // Data under the keys above go into these TextViews.
-                        new int[] { R.id.expandable_categoryItemCode, R.id.expandable_categoryItemTitle}
-                );
-        return expListAdapter;
     }
 
     @Override
