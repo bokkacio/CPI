@@ -16,6 +16,7 @@ import ru.iate.cpi.ui.containers.SpinnerElement;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -47,7 +48,8 @@ public class Settings extends Activity implements AdapterView.OnItemSelectedList
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, OptionMenuCodes.DATA_INPUT_ACTIVITY, 0, OptionMenuCodes.DATA_INPUT_ACTIVITY_STR);
-        menu.add(0, OptionMenuCodes.EXIT, 1, OptionMenuCodes.EXIT_STR);
+        menu.add(0, OptionMenuCodes.CPI_CALCULATION, 1, OptionMenuCodes.CPI_CALCULATION_STR);
+        menu.add(0, OptionMenuCodes.EXIT, 2, OptionMenuCodes.EXIT_STR);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -59,6 +61,14 @@ public class Settings extends Activity implements AdapterView.OnItemSelectedList
                 //start DataInput activity
                 Intent intent = new Intent(this, DataInput.class);
                 startActivityForResult(intent, OptionMenuCodes.DATA_INPUT_ACTIVITY);
+                finish();
+                break;
+            }
+            case OptionMenuCodes.CPI_CALCULATION:
+            {
+                //start CpiResult activity
+                Intent intent = new Intent(this, CpiResult.class);
+                startActivityForResult(intent, OptionMenuCodes.CPI_CALCULATION);
                 finish();
                 break;
             }
@@ -127,14 +137,18 @@ public class Settings extends Activity implements AdapterView.OnItemSelectedList
 
         String result = settings == null || settingsRegion == null ? "Текущие настройки не установлены" :
                 String.format("Текущий регион: %s\nТекущий рабочий период: %s", settingsRegion.GetTitle(),
-                        String.format("%s.%d", new SimpleDateFormat("dd.MM").format(settings.GetWorkingPeriod()), settings.GetWorkingPeriod().getYear()));
+                        new SimpleDateFormat("dd.MM.yyyy").format(settings.GetWorkingPeriod()));
         currentSettings.setText(result);
     }
 
     public void onSetPeriodClick(View view) {
-        Date pickerDate = new Date(workingPeriodPicker.getYear(), workingPeriodPicker.getMonth(), workingPeriodPicker.getDayOfMonth());
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DATE, workingPeriodPicker.getDayOfMonth());
+        cal.set(Calendar.MONTH, workingPeriodPicker.getMonth());
+        cal.set(Calendar.YEAR, workingPeriodPicker.getYear());
+
         SpinnerElement selectedItem = (SpinnerElement)spinnerRegionCode.getSelectedItem();
-        EventBus.getDefault().post(new AddSettingEvent(new ru.iate.cpi.db.table.Settings(selectedItem.Id, pickerDate)));
+        EventBus.getDefault().post(new AddSettingEvent(new ru.iate.cpi.db.table.Settings(selectedItem.Id, cal.getTime())));
     }
 
     @Override

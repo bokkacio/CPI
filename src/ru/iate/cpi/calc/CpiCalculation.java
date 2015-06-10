@@ -29,8 +29,8 @@ public class CpiCalculation {
     private final ProductManager _productManager;
 
     private Settings currentSettings;
-    private List<Data> currentMonthDataSource;
-    private List<Data> previousMonthDataSource;
+    private List<Data> currentMonthDataSource = new ArrayList<Data>();;
+    private List<Data> previousMonthDataSource = new ArrayList<Data>();;
     private List<Category> categorySource;
     private List<Product> productSource;
 
@@ -41,46 +41,51 @@ public class CpiCalculation {
         _productManager = new ProductManager(DatabaseFactory.Get());
     }
 
-    public static Date firstDayOfMonth(Date workingDate) {
+    public static Date FirstDayOfMonth(Date date) {
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.DATE, workingDate.getDay());
-        cal.set(Calendar.MONTH, workingDate.getMonth());
-        cal.set(Calendar.YEAR, workingDate.getYear());
+        cal.setTime(date);
 
         //set first date
         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
         return cal.getTime();
     }
 
-    public static Date lastDayOfMonth(Date workingDate) {
+    public static Date LastDayOfMonth(Date date) {
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.DATE, workingDate.getDay());
-        cal.set(Calendar.MONTH, workingDate.getMonth());
-        cal.set(Calendar.YEAR, workingDate.getYear());
+        cal.setTime(date);
 
         //set last date
         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
         return cal.getTime();
     }
 
-    public static Date getPreviousDatePeriod(Date workingDate) {
+    public static Date GetPreviousDatePeriod(Date date) {
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.DATE, workingDate.getDay());
-        cal.set(Calendar.MONTH, workingDate.getMonth());
-        cal.set(Calendar.YEAR, workingDate.getYear());
+        cal.setTime(date);
 
         //set previous month
         cal.add(Calendar.MONTH, -1);
         return cal.getTime();
     }
 
-    private void initDbData(){
+    public void initDbData(){
         try{
-            Date current = currentSettings.GetWorkingPeriod();
-            Date previous = getPreviousDatePeriod(current);
             currentSettings = _settingsManager.GetSettingsInfo();
-            currentMonthDataSource = _dataManager.GetData(firstDayOfMonth(current), lastDayOfMonth(current), currentSettings.GetRegionId());
-            previousMonthDataSource = _dataManager.GetData(firstDayOfMonth(previous), lastDayOfMonth(previous), currentSettings.GetRegionId());
+
+            Date current = currentSettings.GetWorkingPeriod();
+            Date previous = GetPreviousDatePeriod(current);
+            List<Data> regionData = _dataManager.GetData(currentSettings.GetRegionId());
+
+            for (Data data : regionData){
+                if(data.GetSubmitDate().compareTo(FirstDayOfMonth(current)) >= 0 && data.GetSubmitDate().compareTo(LastDayOfMonth(current)) <= 0)
+                    currentMonthDataSource.add(data);
+                if(data.GetSubmitDate().compareTo(FirstDayOfMonth(previous)) >= 0 && data.GetSubmitDate().compareTo(LastDayOfMonth(previous)) <= 0)
+                    previousMonthDataSource.add(data);
+            }
+
+            Log.d(LogTags.ERROR_PREFIX, "CpiCalculation - currentMonthDataSource " + currentMonthDataSource.size());
+            Log.d(LogTags.ERROR_PREFIX, "CpiCalculation - previousMonthDataSource " + previousMonthDataSource.size());
+
             categorySource = _categoryManager.GetCategories();
             productSource = _productManager.GetProducts();
         }
@@ -90,6 +95,8 @@ public class CpiCalculation {
     }
 
     private double calcCategoryGeometricAverage(String categoryCode, List<Data> source){
+        //Log.d(LogTags.ERROR_PREFIX, "CpiCalculation - calcCategoryGeometricAverage " + categoryCode);
+
         Category current = new Category();
         for(Category category : categorySource)
             if(category.GetCode().equals(categoryCode)){
@@ -109,6 +116,9 @@ public class CpiCalculation {
                 if(categoryProduct.GetId() == data.GetProductId())
                     categoryData.add(data);
 
+        if(categoryData.isEmpty())
+            return 0;
+
         double multiplyPrice = 1.0;
         for (Data data : categoryData)
             multiplyPrice *= data.GetPrice();
@@ -116,12 +126,12 @@ public class CpiCalculation {
         return Math.pow(multiplyPrice, 1.0 / categoryData.size());
     }
 
-    public List<elementaryCpi> getElementaryIndexList(String secondLevelCode){
+    private List<CpiElement> getElementaryIndexList(String firstLevelCode){
         List<Category> lastLevelCategories = new ArrayList<Category>();
-        List<elementaryCpi> result = new ArrayList<elementaryCpi>();
+        List<CpiElement> result = new ArrayList<CpiElement>();
 
         for(Category category : categorySource)
-            if(category.GetCode().contains(secondLevelCode) &&
+            if(category.GetCode().contains(firstLevelCode) &&
                 category.GetLevel() == Category.LEVEL_ITEM)
                 lastLevelCategories.add(category);
 
@@ -129,21 +139,58 @@ public class CpiCalculation {
             double previousMonthAverage = calcCategoryGeometricAverage(category.GetCode(), previousMonthDataSource);
             double currentMonthAverage = calcCategoryGeometricAverage(category.GetCode(), currentMonthDataSource);
 
-            result.add(new elementaryCpi(category.GetWeight(), currentMonthAverage/previousMonthAverage, category.GetCode()));
+            if(previousMonthAverage != 0 || currentMonthAverage != 0){
+                result.add(new CpiElement(category.GetWeight(), (currentMonthAverage/previousMonthAverage)*100, category.GetCode()));
+            }
+            else
+                result.add(new CpiElement(category.GetWeight(), 100.0, category.GetCode()));
         }
 
         return result;
     }
 
-    class elementaryCpi{
-        public final double index;
-        public final float weight;
-        public String code;
+    private CpiElement getAggregateFirstLevel(Category category){
+        List<CpiElement> indexes = getElementaryIndexList(category.GetCode());
 
-        public elementaryCpi(float weight, double index, String code){
-            this.weight = weight;
-            this.index = index;
-            this.code = code;
+
+        double sumIndex = 0.0;
+        double sumWeight = 0.0;
+        for (CpiElement element : indexes){
+            sumIndex += (element.weight * element.index);
+            sumWeight += element.weight;
         }
+
+        return new CpiElement(category.GetWeight(), sumIndex/sumWeight, category.GetCode());
+    }
+
+
+    public List<CpiElement> getAggregateFirstLevels(){
+        Log.d(LogTags.ERROR_PREFIX, "CpiCalculation - getAggregateFirstLevels");
+
+        List<CpiElement> result = new ArrayList<CpiElement>();
+
+        Log.d(LogTags.ERROR_PREFIX, "CpiCalculation - getAggregateFirstLevels result " + result.size());
+
+        for(Category category : categorySource)
+            if(category.GetLevel() == Category.LEVEL_GROUP)
+                result.add(getAggregateFirstLevel(category));
+
+        return result;
+    }
+
+    public double getCpi(){
+        Log.d(LogTags.ERROR_PREFIX, "CpiCalculation - getCpi");
+
+        List<CpiElement> firstLevelIndexes = getAggregateFirstLevels();
+        double sumIndex = 0;
+        double sumWeight = 0;
+        for (CpiElement element : firstLevelIndexes){
+            sumIndex += (element.weight * element.index);
+            sumWeight += element.weight;
+        }
+
+        Log.d(LogTags.ERROR_PREFIX, "CpiCalculation - getCpi firstLevelIndexes " + firstLevelIndexes.size());
+
+        return sumIndex/sumWeight;
     }
 }

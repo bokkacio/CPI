@@ -69,13 +69,11 @@ public class DataManager {
         }
     }
 
-    public List<Data> GetData(Date startDate, Date endDate, int regionId) throws Exception{
+    public List<Data> GetData(int regionId) throws Exception{
         try {
             Dao<Data,Integer> dao = _db.getDataDao();
             QueryBuilder<Data,Integer> daoData = dao.queryBuilder();
             daoData.where().eq(Region.REGION_ID_FIELD, regionId);
-            daoData.where().ge(Data.DATA_SUBMIT_DATE_FIELD, startDate);
-            daoData.where().le(Data.DATA_SUBMIT_DATE_FIELD, endDate);
             return daoData.query();
         }
         catch(Exception ex){

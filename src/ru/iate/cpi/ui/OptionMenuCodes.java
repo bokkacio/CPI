@@ -21,4 +21,7 @@ public class OptionMenuCodes {
 
     public static final int CATEGORY_ACTIVITY = 6;
     public static final String CATEGORY_ACTIVITY_STR = "Категории";
+
+    public static final int CPI_CALCULATION = 7;
+    public static final String CPI_CALCULATION_STR = "Расчёт ИПЦ";
 }
