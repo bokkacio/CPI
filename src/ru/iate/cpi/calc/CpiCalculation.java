@@ -12,9 +12,9 @@ import ru.iate.cpi.db.table.Data;
 import ru.iate.cpi.db.table.Product;
 import ru.iate.cpi.db.table.Settings;
 import ru.iate.cpi.ui.LogTags;
+import ru.iate.cpi.util.DateTimeHelper;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -41,45 +41,22 @@ public class CpiCalculation {
         _productManager = new ProductManager(DatabaseFactory.Get());
     }
 
-    public static Date FirstDayOfMonth(Date date) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
 
-        //set first date
-        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
-        return cal.getTime();
-    }
-
-    public static Date LastDayOfMonth(Date date) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-
-        //set last date
-        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
-        return cal.getTime();
-    }
-
-    public static Date GetPreviousDatePeriod(Date date) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-
-        //set previous month
-        cal.add(Calendar.MONTH, -1);
-        return cal.getTime();
-    }
 
     public void initDbData(){
         try{
             currentSettings = _settingsManager.GetSettingsInfo();
 
             Date current = currentSettings.GetWorkingPeriod();
-            Date previous = GetPreviousDatePeriod(current);
+            Date previous = DateTimeHelper.GetPreviousDatePeriod(current);
             List<Data> regionData = _dataManager.GetData(currentSettings.GetRegionId());
 
             for (Data data : regionData){
-                if(data.GetSubmitDate().compareTo(FirstDayOfMonth(current)) >= 0 && data.GetSubmitDate().compareTo(LastDayOfMonth(current)) <= 0)
+                if(data.GetSubmitDate().compareTo(DateTimeHelper.FirstDayOfMonth(current)) >= 0 &&
+                        data.GetSubmitDate().compareTo(DateTimeHelper.LastDayOfMonth(current)) <= 0)
                     currentMonthDataSource.add(data);
-                if(data.GetSubmitDate().compareTo(FirstDayOfMonth(previous)) >= 0 && data.GetSubmitDate().compareTo(LastDayOfMonth(previous)) <= 0)
+                if(data.GetSubmitDate().compareTo(DateTimeHelper.FirstDayOfMonth(previous)) >= 0 &&
+                        data.GetSubmitDate().compareTo(DateTimeHelper.LastDayOfMonth(previous)) <= 0)
                     previousMonthDataSource.add(data);
             }
 

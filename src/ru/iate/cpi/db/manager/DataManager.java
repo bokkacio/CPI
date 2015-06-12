@@ -6,6 +6,7 @@ import com.j256.ormlite.stmt.QueryBuilder;
 import com.j256.ormlite.stmt.UpdateBuilder;
 import ru.iate.cpi.db.helper.OrmLiteDatabaseHelper;
 import ru.iate.cpi.db.table.*;
+import ru.iate.cpi.util.DateTimeHelper;
 
 import java.util.Date;
 import java.util.List;
@@ -20,12 +21,13 @@ public class DataManager {
         _db = db;
     }
 
-    public List<Data> GetData(Date submitDate, int regionId) throws Exception{
+    public List<Data> GetData(Date submitDay, int regionId) throws Exception{
         try {
             Dao<Data,Integer> dao = _db.getDataDao();
             QueryBuilder<Data,Integer> daoData = dao.queryBuilder();
             daoData.where().eq(Region.REGION_ID_FIELD, regionId);
-            daoData.where().eq(Data.DATA_SUBMIT_DATE_FIELD, submitDate);
+            daoData.where().ge(Data.DATA_SUBMIT_DATE_FIELD, DateTimeHelper.GetDayStart(submitDay));
+            daoData.where().le(Data.DATA_SUBMIT_DATE_FIELD, DateTimeHelper.GetDayEnd(submitDay));
             return daoData.query();
         }
         catch(Exception ex){
@@ -43,11 +45,11 @@ public class DataManager {
         }
     }
 
-    public void UpdateData(int priceId, int price) throws Exception{
+    public void UpdateData(int dataId, int price) throws Exception{
         try {
             UpdateBuilder<Data, Integer> updateBuilder = _db.getDataDao().updateBuilder();
             // set the criteria like you would a QueryBuilder
-            updateBuilder.where().eq(Data.DATA_ID_FIELD, priceId);
+            updateBuilder.where().eq(Data.DATA_ID_FIELD, dataId);
             // update the value of your field(s)
             updateBuilder.updateColumnValue(Data.DATA_PRICE_FIELD /* column */, price /* value */);
             updateBuilder.update();
