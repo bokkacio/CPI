@@ -52,7 +52,7 @@ public class CpiResult extends Activity {
         try{
             CpiCalculation calculation = new CpiCalculation(this);
             calculation.initDbData();
-            Toast.makeText(this, "CPI result " + calculation.getCpi(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "CPI result " + calculation.getCpi().index, Toast.LENGTH_SHORT).show();
         }
         catch(Exception ex){
             Toast.makeText(this, "CPI calculation error " + ex.getMessage(), Toast.LENGTH_SHORT).show();

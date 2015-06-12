@@ -41,8 +41,6 @@ public class CpiCalculation {
         _productManager = new ProductManager(DatabaseFactory.Get());
     }
 
-
-
     public void initDbData(){
         try{
             currentSettings = _settingsManager.GetSettingsInfo();
@@ -116,11 +114,11 @@ public class CpiCalculation {
             double previousMonthAverage = calcCategoryGeometricAverage(category.GetCode(), previousMonthDataSource);
             double currentMonthAverage = calcCategoryGeometricAverage(category.GetCode(), currentMonthDataSource);
 
-            if(previousMonthAverage != 0 || currentMonthAverage != 0){
-                result.add(new CpiElement(category.GetWeight(), (currentMonthAverage/previousMonthAverage)*100, category.GetCode()));
-            }
+            //only for valid GeometricAverage
+            if(previousMonthAverage != 0 || currentMonthAverage != 0)
+                result.add(new CpiElement(category.GetWeight(), (currentMonthAverage/previousMonthAverage)*100, category.GetCode(), category.GetTitle()));
             else
-                result.add(new CpiElement(category.GetWeight(), 100.0, category.GetCode()));
+                result.add(new CpiElement(category.GetWeight(), 100.0, category.GetCode(), category.GetTitle()));
         }
 
         return result;
@@ -129,45 +127,41 @@ public class CpiCalculation {
     private CpiElement getAggregateFirstLevel(Category category){
         List<CpiElement> indexes = getElementaryIndexList(category.GetCode());
 
-
         double sumIndex = 0.0;
         double sumWeight = 0.0;
         for (CpiElement element : indexes){
             sumIndex += (element.weight * element.index);
             sumWeight += element.weight;
         }
-
-        return new CpiElement(category.GetWeight(), sumIndex/sumWeight, category.GetCode());
+        return new CpiElement(category.GetWeight(), sumIndex/sumWeight, category.GetCode(), category.GetTitle());
     }
 
 
     public List<CpiElement> getAggregateFirstLevels(){
-        Log.d(LogTags.ERROR_PREFIX, "CpiCalculation - getAggregateFirstLevels");
-
         List<CpiElement> result = new ArrayList<CpiElement>();
 
-        Log.d(LogTags.ERROR_PREFIX, "CpiCalculation - getAggregateFirstLevels result " + result.size());
-
         for(Category category : categorySource)
-            if(category.GetLevel() == Category.LEVEL_GROUP)
-                result.add(getAggregateFirstLevel(category));
+            //only for categories with not empty Weight
+            if(category.GetLevel() == Category.LEVEL_GROUP &&
+                category.GetWeight() != 0)
+            {
+                CpiElement element = getAggregateFirstLevel(category);
+                result.add(element);
+            }
 
         return result;
     }
 
-    public double getCpi(){
-        Log.d(LogTags.ERROR_PREFIX, "CpiCalculation - getCpi");
-
+    public CpiElement getCpi(){
         List<CpiElement> firstLevelIndexes = getAggregateFirstLevels();
-        double sumIndex = 0;
-        double sumWeight = 0;
+        double sumIndex = 0.0;
+        double sumWeight = 0.0;
         for (CpiElement element : firstLevelIndexes){
             sumIndex += (element.weight * element.index);
             sumWeight += element.weight;
         }
 
-        Log.d(LogTags.ERROR_PREFIX, "CpiCalculation - getCpi firstLevelIndexes " + firstLevelIndexes.size());
-
-        return sumIndex/sumWeight;
+        Float resultWeight = new Float(sumWeight);
+        return new CpiElement(resultWeight.floatValue(), sumIndex/sumWeight, "", "ИПЦ");
     }
 }
