@@ -9,15 +9,27 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="5">
+            android:layout_weight="0.5">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/lbl_cpiList"
                 android:textColor="@color/black"
+                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_gravity="center_horizontal"/>
-
     </LinearLayout>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scrollbars="none"
+            android:layout_weight="4.5">
+        <TableLayout android:id="@+id/table_cpiResult"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:stretchColumns="1"
+                     android:shrinkColumns="0"/>
+    </ScrollView>
 
     <LinearLayout
             android:orientation="vertical"

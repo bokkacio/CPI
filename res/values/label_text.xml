@@ -42,6 +42,10 @@
     <!--cpi_result.xml-->
     <string name="lbl_cpiList">ИПЦ по категориям</string>
     <string name="lbl_cpiConstruction">Расчет ИПЦ</string>
+    <string name="lbl_cpiCodeTitle">Код</string>
+    <string name="lbl_cpiCategoryTitle">Наименование</string>
+    <string name="lbl_cpiIndex">ИПЦ</string>
+    <string name="lbl_cpiWeight">Вес</string>
     <!--spending_calculation.xml-->
     <string name="lbl_spendingList">Расходы по категориям</string>
     <string name="lbl_spendingCalculation">Подсчет расходов</string>

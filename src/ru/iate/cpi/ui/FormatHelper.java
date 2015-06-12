@@ -9,4 +9,8 @@ public class FormatHelper {
     public static String GetFloat(float valueToFormat){
         return String.format(Locale.US, "%.4f", valueToFormat);
     }
+
+    public static String GetDouble(double valueToFormat){
+        return String.format(Locale.US, "%.4f", valueToFormat);
+    }
 }
