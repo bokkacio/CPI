@@ -17,7 +17,6 @@ import ru.iate.cpi.ui.containers.SpinnerElement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -94,17 +93,11 @@ public class Settings extends Activity implements AdapterView.OnItemSelectedList
         //disable writing inside a date picker using keyboard
         workingPeriodPicker.setDescendantFocusability(DatePicker.FOCUS_BLOCK_DESCENDANTS);
 
-        //extract regions
-        if(regions == null)
-            EventBus.getDefault().post(new GetRegionsEvent());
-        else
-            initSpinners();
-
         //extract settings
-        if(settings == null)
-            EventBus.getDefault().post(new GetSettingsEvent());
-        else
-            initSettings();
+        EventBus.getDefault().post(new GetSettingsEvent());
+
+        //extract regions
+        EventBus.getDefault().post(new GetRegionsEvent());
     }
 
     //Extract regions from DB
@@ -131,6 +124,20 @@ public class Settings extends Activity implements AdapterView.OnItemSelectedList
 
         setSpinnerAdapter(codeList, spinnerRegionCode);
         setSpinnerAdapter(titleList, spinnerRegionTitle);
+
+        //current region is empty
+        if(settingsRegion == null)
+            return;
+
+        //set spinners to current region
+        for(int i=0; i<spinnerRegionCode.getAdapter().getCount(); i++){
+            SpinnerElement element = (SpinnerElement)spinnerRegionCode.getAdapter().getItem(i);
+            if(element.Id == settingsRegion.GetId()){
+                spinnerRegionCode.setSelection(i);
+                spinnerRegionTitle.setSelection(i);
+                break;
+            }
+        }
     }
 
     private void initSettings(){
