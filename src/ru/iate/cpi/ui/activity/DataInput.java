@@ -72,7 +72,6 @@ public class DataInput extends Activity implements AdapterView.OnItemSelectedLis
         {
             case R.id.spinner_dataStore:
                 store = (SpinnerElement) spinnerStore.getItemAtPosition(position);
-                setCurrentPrice();
                 break;
             case R.id.spinner_dataCategoryGroup:{
                 groupCategory = (SpinnerElement) spinnerCategoryGroup.getItemAtPosition(position);
@@ -95,13 +94,13 @@ public class DataInput extends Activity implements AdapterView.OnItemSelectedLis
             }
             case R.id.spinner_dataProduct:
                 product = (SpinnerElement) spinnerProduct.getItemAtPosition(position);
-                setCurrentPrice();
                 break;
             case R.id.spinner_dataQuantity:
                 quantity = (SpinnerElement) spinnerQuantity.getItemAtPosition(position);
-                setCurrentPrice();
                 break;
         }
+
+        setCurrentPrice();
     }
 
     @Override

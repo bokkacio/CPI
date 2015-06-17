@@ -155,7 +155,7 @@ public class ProductEdit extends Activity {
 
     public void AddProduct(View view){
         String productTitle = editProductTitle.getText().toString();
-        if(productTitle.equals(""))
+        if(productTitle.equals("") || selectedCategory == null)
             return;
 
         for (Product product : products)
